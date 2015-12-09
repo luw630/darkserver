@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{c3a37fde-371f-4e6e-9930-03eac62532b1}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="源文件\win32Details">
+      <UniqueIdentifier>{f703886d-1d07-4d13-91da-c97939e5646c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{ccf2ebee-0186-48d6-9f45-df39d234a3d9}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{e43ed183-1845-4fb5-b4aa-ce12b590afbe}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DirectNetServer_last_version.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lzw.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\Buffer.hpp">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\Connection.hpp">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\globals.h">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\Receiver.hpp">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\Sender.hpp">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="details\win32\Server.hpp">
+      <Filter>源文件\win32Details</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
