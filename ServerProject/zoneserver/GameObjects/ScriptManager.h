@@ -18,7 +18,7 @@
 //#include <pub/waitqueue.h>
 
 //#pragma comment (lib, "DGameScript.lib")
-#pragma comment (lib, "lualib.lib")
+//#pragma comment (lib, "lualib.lib")
 
 
 struct stEvent {

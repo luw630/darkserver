@@ -21,7 +21,7 @@
 extern "C" {
 #include "lauxlib.h"
 }
-
+#include "..\..\zoneserver\zoneserver\Oldfunction.h"
 extern LPIObject FindRegionByID( DWORD ID );
 #define CureentDayNum 3
 

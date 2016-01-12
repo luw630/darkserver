@@ -2718,7 +2718,7 @@ struct ExtraLuaFunctions
 		if ( destRegion == NULL )
 			return 0;
 
-		QWORD uniqueId = luaEx_toint63( L, 3 );
+		QWORD uniqueId = 1;
 		//double tempNumber = lua_tonumber( L, 3 );     // 特殊的建筑物的唯一ID
 		//QWORD &uniqueId = reinterpret_cast< QWORD& >( tempNumber );
 		if ( uniqueId != 0 )
@@ -3275,59 +3275,32 @@ __checkfail:
 		if ( errstr )
 			luaL_error( L, errstr );
 
-		return luaEx_pushint63( L, kid ), 1;
+		return  1;
 	}
 
 	static int L_ClrEvent( lua_State *L )
 	{
 		int t1 = lua_type( L, 1 );
-		QWORD idk = 0;
-		DWORD uid = 0;
-		if ( t1 == LUA_TNUMBER )
-			uid = (DWORD)lua_tonumber( L, 1 );
-		else if ( luaEx_isint63( L, 1 ) )
-			idk = luaEx_toint63( L, 1 );
 
-		int ClrEvent( DWORD uid, QWORD *pidk );
-		int ck = ClrEvent( uid, ( t1 == LUA_TNUMBER ) ? NULL : &idk );
-		if ( ck == -1 )
-			luaL_error( L, "ClrEvent : removing lua event in event self-execution" );
-
-		if ( ck <= 0 )
-			return 0;
 
 		return lua_pushnumber( L, 1 ), 1;
 	}
 
 	static int L_Int63ToStr( lua_State *L )
 	{
-		if ( !luaEx_isint63( L, 1 ) )
-			return 0;
 
-		unsigned __int64 int63 = luaEx_toint63( L, 1 );
-		char buf[256];
-		sprintf( buf, "%I64X", int63 );
-		lua_pushstring( L, buf );
 		return 1;
 	}
 
 	static int L_StrToInt63( lua_State *L )
 	{
-		if ( !lua_isstring( L, 1 ) )
-			return 0;
 
-		LPCSTR str = lua_tostring( L, 1 );
-		luaEx_pushint63( L, Details::HexStringToNumber( str ) );
 		return 1;
 	}
 
 	static int L_Int63ToNumber( lua_State *L )
 	{
-		if ( !luaEx_isint63( L, 1 ) )
-			return 0;
 
-		unsigned __int64 int63 = luaEx_toint63( L, 1 );
-		lua_pushnumber( L, (lua_Number)( __int64 )int63 );
 		return 1;
 	}
 
@@ -3339,7 +3312,7 @@ __checkfail:
 		// 1000 0000 0000 0000
 		// double 的最连续大整数精度到 一千万亿 15位整数 所以需要限制整数数据在这个范围内
 		double number = lua_tonumber( L, 1 );
-		luaEx_pushint63( L, ( unsigned __int64 )number );
+		
 		return 1;
 	}
 
@@ -3477,14 +3450,7 @@ __checkfail:
 			//if ( !lua_istable( L, -1 ) )
 			//    goto __error_exit;
 
-			// 如果是空数据，或者以前老的liteserail逻辑数据，则直接返回一个空表！
-			if ( *( LPDWORD )teBuffer->saveData == 0 || *( LPDWORD )teBuffer->saveData == 0x00040004 )
-				lua_createtable( L, 0, 0 ); // 创建data子表
-			else {
-				int ck = luaEx_unserialize( L, ( LPBYTE )teBuffer->saveData + 4, *( LPDWORD )teBuffer->saveData );
-				if ( ck <= 0 || ck != *( LPDWORD )teBuffer->saveData )
-					goto __error_exit;
-			}
+
 			lua_setfield( L, -2, "data" );
 		}
 
@@ -3587,16 +3553,7 @@ __error_exit:
 				lua_getfield( L, -1, "data" );
 				if ( lua_istable( L, -1 ) )
 				{
-					if ( teBuffer->saveData != NULL ) {
-						prev1 = *( LPDWORD )teBuffer->saveData;
-						if ( HIWORD(prev1) ) // 容错处理，避免以前的老序列化数据0x00040004导致错误
-							prev1 = 0;
-					}
-					cur1 = luaEx_serialize( L, -1, sdbBuffer + 4, (int)size1 - 4 );
-					if ( cur1 < 0 )
-						goto __error_exit;
-					*( LPDWORD )sdbBuffer = cur1;
-					cur1 += 4;
+
 				}
 				lua_pop( L, 1 );
 
@@ -3609,11 +3566,7 @@ __error_exit:
 						if ( HIWORD(prev2) ) // 容错处理，避免以前的老序列化数据0x00040004导致错误
 							prev2 = 0;
 					}
-					cur2 = luaEx_serialize( L, -1, tdbBuffer + 4, (int)size2 - 4 );
-					if ( cur2 < 0 )
-						goto __error_exit;
-					*( LPDWORD )tdbBuffer = cur2;
-					cur2 += 4;
+
 				}
 				lua_pop( L, 1 );
 
@@ -3797,7 +3750,7 @@ __error_exit:
 						if ( HIWORD(prev1) ) // 容错处理，避免以前的老序列化数据0x00040004导致错误
 							prev1 = 0;
 					}
-					cur1 = luaEx_serialize( L, -1, sdbBuffer + 4, (int)size1 - 4 );
+				//	cur1 = luaEx_serialize( L, -1, sdbBuffer + 4, (int)size1 - 4 );
 					if ( cur1 < 0 )
 						goto __error_exit;
 					*( LPDWORD )sdbBuffer = cur1;

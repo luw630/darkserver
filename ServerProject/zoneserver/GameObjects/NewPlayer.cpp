@@ -3,10 +3,15 @@
 #include "playermanager.h"
 #include "ScriptManager.h"
 #include "NETWORKMODULE/RefreshMsgs.h"
+#include "tolua++.h"
 
 extern "C" {
-#include "lauxlib.h"
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 }
+#include "../zoneserver/playerdata.pb.h"
+#include "../zoneserver/tolua_Playerdata.h"
 
 extern BOOL SendRefreshPlayerMessage(int storeflag, DWORD gid, LPCSTR acc, SFixNewData *pData, SPlayerTempData *pTempData);
 extern CScriptManager g_Script;
@@ -86,9 +91,26 @@ BOOL CNewPlayer::SetFixData(SFixData *pData)
 
 	size_t nsize = sizeof(SFixData);
 
+// 	PlayerData  perData;
+// 	perData.set_sid(pData->m_dwStaticID);
+// 	perData.set_playername(pData->m_Name);
+	
 	if (pData->m_bNewPlayer)//如果是新玩家
 	{
 		lua_State *ls = g_Script.ls;
+// 		tolua_open(ls);
+// 		tolua_playerdata_open(ls);
+		//perData.set_bisnewplayer(true);
+		std::string strdata;
+		//perData.SerializeToString(&strdata);
+
+		
+		if (g_Script.PrepareFunction("NewPlayerInit"))
+		{
+			g_Script.PushParameter(strdata.c_str());
+			g_Script.Execute();
+		}
+			
 		if (lua_gettop(ls) == 0)
 		{
 			lua_getglobal(ls, "NewPlayerSetFixData");
@@ -115,6 +137,7 @@ BOOL CNewPlayer::SetFixData(SFixData *pData)
 	}
 	else
 	{
+		//perData.set_bisnewplayer(false);
 		lua_State *ls = g_Script.ls;
 		if (lua_gettop(ls) == 0)
 		{
@@ -127,7 +150,7 @@ BOOL CNewPlayer::SetFixData(SFixData *pData)
 			}
 			lua_pushinteger(ls, 0);
 			lua_newtable(ls);
-			int ck = luaEx_unserialize(ls, pData->bData, pData->dBufferLenth);
+			int ck = 1;
 			if (ck <= 0)
 			{
 				return FALSE;

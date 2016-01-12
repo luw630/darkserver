@@ -42,6 +42,8 @@
 #include "zoneserver/Environment.h"
 #include "NetWorkModule/PlayerTypedef.h"
 
+#include "..\..\zoneserver\zoneserver\Oldfunction.h"
+
 extern LPIObject FindRegionByGID( DWORD GID );
 extern LPIObject FindRegionByID( DWORD ID );
 extern BOOL GenerateNewUniqueId( SItemBase &item );
@@ -125,7 +127,7 @@ int CBuilding::lua_PushTable( struct lua_State *L )
         //QWORD uniqueId = property.uniqueId();
         //lua_pushnumber( L, reinterpret_cast< double& >( uniqueId ) ); 
         //lua_settable( L, -3 );
-        luaEx_pushint63( L, property.uniqueId() );
+//        luaEx_pushint63( L, property.uniqueId() );
         lua_settable( L, -3 );
 
         lua_pushstring( L, "_index" ); 
@@ -396,9 +398,9 @@ struct ExtraLuaFunctions
             {
                 unsigned __int64 uid = 0;
                 lua_getfield( L, 2, "uniqueId" );
-                __validate = luaEx_isint63( L, -1 );
-                if ( __validate )
-                    uid = luaEx_toint63( L, -1 );
+//                 __validate = luaEx_isint63( L, -1 );
+//                 if ( __validate )
+//                     uid = luaEx_toint63( L, -1 );
                 lua_pop( L, 1 );
                 if ( __validate )
                     faction.buildingStub.uniqueId = uid;
@@ -1051,7 +1053,8 @@ struct ExtraLuaFunctions
                 lite::Serializer slm(  msg.streamData, sizeof(  msg.streamData ) );
 
                 lua_getfield( L, 2, "data" );
-                size_t len = lua_objlen( L, -1 );
+				//size_t len = lua_rawlen(L, -1);
+				size_t len = lua_objlen(L, -1);
                 if ( len <= 0 || !lua_istable( L, -1 ) )
                     return lua_pop( L, 1 ), 0;
 
@@ -1873,7 +1876,7 @@ struct ExtraLuaFunctions
 
         destRegion->m_LimitItemList.clear();
 
-        size_t len = lua_objlen( L, 2 );
+		size_t len = lua_objlen(L, 2);
 
         for ( DWORD i = 0; i < len; ++i )
         {
@@ -3040,7 +3043,7 @@ struct ExtraLuaFunctions
         msg.destSercerId = static_cast< DWORD >( lua_tonumber( L, 2 ) );
         
         int size = sizeof( msg.streamData );
-        int cur1 = luaEx_serialize( L, 3, msg.streamData + 4, size - 4 );
+		int cur1 = 1;
         int nowSize = size - ( cur1 + 4 );
 
         if ( cur1 < 0 || cur1 >  size - 4 )
@@ -3065,23 +3068,10 @@ __error_SendTrn_exit:
         int size = 0;
         int top = lua_gettop( L );
 
-        void *data = luaEx_touserdata( L, 1, &size );
 
-        if ( data == NULL || size <= 0 || size > 4096 )
-            return 0;
-
-        lua_createtable( L, 0, 0 ); // 创建data子表
-        int ck = luaEx_unserialize( L, ( LPBYTE )data + 4, *( LPDWORD )data );
-
-        if ( ck <= 0 || ck != *( LPDWORD )data )
-            goto __error_GetTrn_exit;
 
         return 1;
-__error_GetTrn_exit:
-        if ( lua_gettop( L ) != top )
-            lua_settop( L, top );
 
-        return 0;
     }
 
     // 得到持久相关信息参数:1(类型).0结束时间 2.剩余时间

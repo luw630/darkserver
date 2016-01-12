@@ -63,10 +63,11 @@
     <ClCompile Include="Recharge.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyClass.c">
+    <ClCompile Include="Oldfunction.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyClass.cpp">
+    <ClCompile Include="playerdata.pb.cc" />
+    <ClCompile Include="tolua_Playerdata.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,7 +123,13 @@
     <ClInclude Include="Recharge.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MyClass.h">
+    <ClInclude Include="Oldfunction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="playerdata.pb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="tolua_Playerdata.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

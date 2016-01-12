@@ -23,7 +23,7 @@ using namespace std;
 
 void CGameScript::OpenLua()
 {
-	ls = lua_open();
+	ls = luaL_newstate();
 	lua_gc( ls, LUA_GCSTOP, 0 );    /* stop collector during initialization */
 	luaL_openlibs( ls );            /* open libraries */
 	lua_gc( ls, LUA_GCRESTART, 0 );
@@ -504,7 +504,7 @@ bool CGameScript::RecursionGetTable(char *szNameEntry)
 int CGameScript::GetTableSize(const char *sTableName)
 { 
 	lua_getglobal(ls, sTableName); 
-	int size =  luaL_getn(ls, -1); 
+	int size = lua_objlen(ls, -1);
 	lua_settop(ls, -2); 
 	return size; 
 } 

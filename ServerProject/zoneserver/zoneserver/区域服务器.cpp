@@ -41,10 +41,7 @@
 #include "pub/minihelp.h"
 #include "Recharge.h"
 
-extern "C" {
-#include "lauxlib.h"
-}
-#include "MyClass.c"
+
 
 extern  CSpecialPlayerRcd    *g_pSpecialPlayerRcd;
 extern BOOL LoadNewItemData(LPCSTR filename);
@@ -1970,7 +1967,7 @@ void ExplainCommand(LPCSTR szCommand)
 	break;
 	case 512: //∂¡»°π§ª·
 	{
-	 tolua_MyClass_open(g_Script.ls);
+	 
 
 	}
 	break;

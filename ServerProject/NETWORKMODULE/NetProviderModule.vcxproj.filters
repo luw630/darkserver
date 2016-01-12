@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{f39b4d5e-5608-4d7d-8c88-d020e6c1b8db}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{78e95e8c-012c-4e9a-a9fe-b0e0c47e1a61}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{095a3650-0ce5-4e38-b189-9ef99ebb7e16}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="ContextVersion">
+      <UniqueIdentifier>{22783f2a-fd96-44c5-8046-86adae8a6c99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NetProviderModule.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\new_net\NetServerEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NetProviderModuleAdv.cpp">
+      <Filter>ContextVersion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NEW_NET\NetServerAdv.cpp">
+      <Filter>ContextVersion</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\new_net\DirectNet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NetProviderModuleAdv.h">
+      <Filter>ContextVersion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NEW_NET\NetServerAdv.h">
+      <Filter>ContextVersion</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="NetProviderModule.h">
+      <Filter>头文件</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\new_net\NetServerEx.h">
+      <Filter>头文件</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

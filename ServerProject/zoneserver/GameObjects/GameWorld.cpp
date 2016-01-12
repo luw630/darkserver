@@ -111,6 +111,8 @@
 #include "SanguoCode\BaseDataManager.h"
 #pragma comment(lib, "Wininet.lib")
 
+
+
 SIZE_T GetMemoryInfo();
 extern  CSpecialPlayerRcd    *g_pSpecialPlayerRcd;
 extern long GetItemCount();
@@ -495,6 +497,7 @@ CGameWorld::CGameWorld()
 	m_activityUpdateTime = 0xffffffff;
 	memset(m_BossState,0,128);
 	m_BlessOpenClose = 0;
+	m_poldfunction = nullptr;
 	//CArenaMoudel::getSingleton()->InitArenaData();
 }
 
@@ -592,7 +595,8 @@ BOOL CGameWorld::Initialize()
 	//OnReadBlessFile();
 //	LoadActivityNotice();//从脚本中读取日常活动
 
-
+	m_poldfunction = new COldfunction;
+	m_poldfunction->Initlib();
 
 	return TRUE;
 }

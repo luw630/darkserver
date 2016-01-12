@@ -77,7 +77,8 @@ BOOL CNetServerAdd::SendMessage(CNetClientEx  *petclientex, const void *pvBuf, D
 
 	SNetPacketInfo  sPackInfo;
 	memset(&sPackInfo, 0, sizeof(SNetPacketInfo));
-
+	
+	sPackInfo.m_crc32 = _GetCrc32((LPVOID)pvBuf, wSize);
 	sPackInfo.m_wPacketNum = wSize / LIMITLENTH + 1;
 
 	BYTE  *pTemp = (BYTE*)pvBuf;
@@ -91,7 +92,7 @@ BOOL CNetServerAdd::SendMessage(CNetClientEx  *petclientex, const void *pvBuf, D
 			sPackInfo.m_wIndex++;
 			sPackInfo.m_wLength = wSize;
 			WORD sendsize = sizeof(SNETPACKETINFO) - MAX_SEND_BUFFER + wSize;
-			sPackInfo.m_crc32 = _GetCrc32(sPackInfo.m_bBuffer, sPackInfo.m_wLength);
+			
 			if (!pProviderModule->SendMessageTo(&sPackInfo, sendsize))
 			{
 				//rfalse(2, 1, "SendMessage Faile onIndex %d  Send:%d \n", sPackInfo.m_wIndex, sendsize);
@@ -117,7 +118,7 @@ BOOL CNetServerAdd::SendMessage(CNetClientEx  *petclientex, const void *pvBuf, D
 				sPackInfo.m_wLength = cpylenth;
 
 				WORD sendsize = sizeof(SNETPACKETINFO) - MAX_SEND_BUFFER + cpylenth;
-				sPackInfo.m_crc32 = _GetCrc32(sPackInfo.m_bBuffer, sPackInfo.m_wLength);
+				
 				if (!pProviderModule->SendMessageTo(&sPackInfo, sendsize))
 				{
 					//rfalse(2, 1, "SendMessage Faile onIndex %d  Send:%d \n", sPackInfo.m_wIndex, sendsize);
@@ -151,13 +152,6 @@ BOOL CNetServerAdd::ResolveMessage(LPVOID  pMessage, WORD wLenth, BYTE  **mergeM
 	memset(&sPackInfo, 0, sizeof(SNetPacketInfo));
 	memcpy(&sPackInfo, pMessage, wLenth);
 
-	DWORD crc32 = _GetCrc32(sPackInfo.m_bBuffer, sPackInfo.m_wLength);
-	if (crc32 != sPackInfo.m_crc32)
-	{
-		rfalse(2,1,"CRC32 check faile");
-		return FALSE;
-	}
-
 	if (sPackInfo.m_wIndex == 1 )
 	{
 		memset(m_Buffer, 0, BUFFERMESSAGESIZE);
@@ -168,16 +162,17 @@ BOOL CNetServerAdd::ResolveMessage(LPVOID  pMessage, WORD wLenth, BYTE  **mergeM
 	m_BuffPoint += sPackInfo.m_wLength;
 	if (sPackInfo.m_wPacketNum == sPackInfo.m_wIndex)
 	{
-		m_bResolveFinish = true;
-	}
-
-	if (m_bResolveFinish)
-	{
 		dtotallenth = m_BuffPoint - m_Buffer;
 		*mergeMge = new BYTE[dtotallenth];
 		memcpy(*mergeMge, m_Buffer, dtotallenth);
-		m_bResolveFinish = false;
-		return TRUE;
+
+		DWORD crc32 = _GetCrc32(*mergeMge, dtotallenth);
+		if (crc32 != sPackInfo.m_crc32)
+		{
+			rfalse(2, 1, "CRC32 check faile");
+			return FALSE;
+		}
+		m_bResolveFinish = true;
 	}
 	return m_bResolveFinish;
 }

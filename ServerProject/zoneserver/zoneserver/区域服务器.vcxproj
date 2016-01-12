@@ -255,7 +255,7 @@
     <Link>
       <AdditionalDependencies>lualib.lib;zlib.lib;d3dx9d.lib;tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
-      <AdditionalLibraryDirectories>..\..\TinyXML_Lib;.\..\..\enginelibs\3dx\lib;.\..\..\enginelibs\nxyd\lib;D:\Program Files\boost_1_42_0\libs;D:\Program Files\Microsoft DirectX SDK (March 2009)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\protobuf\lib\release;..\..\TinyXML_Lib;.\..\..\enginelibs\3dx\lib;.\..\..\enginelibs\nxyd\lib;D:\Program Files\boost_1_42_0\libs;D:\Program Files\Microsoft DirectX SDK (March 2009)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>MSVCRTD.lib;msvcprtd.lib;libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)ZoneServer_d.pdb</ProgramDatabaseFile>
@@ -365,8 +365,8 @@ copy "$(OutDir)ZoneServer_d.pdb" "..\..\..\ServerBin\ZoneServer"
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
-      <AdditionalIncludeDirectories>./..;./../..;.\..\..\DirectX9\Include;.\..\..\enginelibs\3dx\include;.\..\..\boost_1_58_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NEW_TEAM;NEW_SKILL;BUILDING_LIBCURL;HTTP_ONLY;ZONESERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./..;./../..;.\..\..\DirectX9\Include;.\..\..\boost_1_58_0;..\..\enginelibs\3dx\include;..\..\protobuf;..\..\tolua++;C:\Program Files (x86)\Lua\5.1\include;.\..\..\luajit\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NEW_TEAM;NEW_SKILL;BUILDING_LIBCURL;HTTP_ONLY;ZONESERVER;LUA_COMPAT_5_1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -381,8 +381,8 @@ copy "$(OutDir)ZoneServer_d.pdb" "..\..\..\ServerBin\ZoneServer"
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>LuaLib.lib;zlib.lib;d3d9.lib;d3dx9.lib;tinyxml.lib;libcurl.lib;json.lib;ws2_32.lib;winmm.lib;wldap32.lib;Win32tolua.lib;NetProviderModule.lib;NetConsumerModule.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Lib;..\..\TinyXML_Lib;.\..\..\enginelibs\3dx\lib;.\..\..\DirectX9\Lib\x86;.\..\..\boost_1_58_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib.lib;d3d9.lib;d3dx9.lib;tinyxml.lib;libcurl.lib;json.lib;ws2_32.lib;winmm.lib;wldap32.lib;NetProviderModule.lib;NetConsumerModule.lib;Projecttolua++.lib;lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\TinyXML_Lib;.\..\..\enginelibs\3dx\lib;.\..\..\DirectX9\Lib\x86;.\..\..\boost_1_58_0\stage\lib;C:\Program Files (x86)\Lua\5.1\lib;.\..\..\Lib;..\..\protobuf\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libc;libcpmt;libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)zoneserver.pdb</ProgramDatabaseFile>
@@ -730,10 +730,10 @@ copy "$(OutDir)ZoneServer.pdb" "..\..\..\ServerBin\ZoneServer"
       <IntrinsicFunctions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IntrinsicFunctions>
     </ClCompile>
     <ClCompile Include="GMServer.cpp" />
-    <ClCompile Include="MyClass.c" />
-    <ClCompile Include="MyClass.cpp" />
     <ClCompile Include="NetGMModule.cpp" />
     <ClCompile Include="NetLoginServerModule.cpp" />
+    <ClCompile Include="Oldfunction.cpp" />
+    <ClCompile Include="playerdata.pb.cc" />
     <ClCompile Include="Recharge.cpp" />
     <ClCompile Include="SocketAdnThreadObj.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -750,6 +750,7 @@ copy "$(OutDir)ZoneServer.pdb" "..\..\..\ServerBin\ZoneServer"
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tolua_Playerdata.cpp" />
     <ClCompile Include="区域服务器.cpp" />
     <ClCompile Include="Environment.cpp" />
     <ClCompile Include="..\..\PUB\GBK_VisibleTest.cpp" />
@@ -764,13 +765,15 @@ copy "$(OutDir)ZoneServer.pdb" "..\..\..\ServerBin\ZoneServer"
     <ClInclude Include="CenterModule.h" />
     <ClInclude Include="DMainApp.h" />
     <ClInclude Include="GMServer.h" />
-    <ClInclude Include="MyClass.h" />
     <ClInclude Include="NetGMModule.h" />
     <ClInclude Include="NetLoginServerModule.h" />
+    <ClInclude Include="Oldfunction.h" />
+    <ClInclude Include="playerdata.pb.h" />
     <ClInclude Include="Recharge.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SocketAndThreadObj.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="tolua_Playerdata.h" />
     <ClInclude Include="区域服务器.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="..\..\PUB\GBK_VisibleTest.h" />

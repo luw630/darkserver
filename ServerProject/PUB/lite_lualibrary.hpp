@@ -6,7 +6,7 @@ extern "C" {
 #include < lua.h >
 #include < lauxlib.h >
 }
-
+#include "..\..\zoneserver\zoneserver\Oldfunction.h"
 namespace lite
 {
     class lua_variant : public lite::Variant

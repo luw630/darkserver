@@ -1,10 +1,12 @@
 #pragma once
 
 #include < stack >
-
+#include <wtypes.h>
 extern "C" {
 #include "lauxlib.h"
 }
+#include "..\..\zoneserver\zoneserver\Oldfunction.h"
+
 
 namespace lite
 {

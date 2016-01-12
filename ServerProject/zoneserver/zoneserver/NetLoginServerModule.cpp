@@ -355,6 +355,7 @@ bool CNetLoginServerModule::OnDispatch( void *data, size_t size )
 
 void CNetLoginServerModule::RecvRefreshMsg(SRefreshBaseMsg *pMsg)
 {
+
 	if (!pMsg)
 	{
 		rfalse(4,1,"CNetLoginServerModule::RecvRefreshMsg(SRefreshBaseMsg *pMsg)ΪNULL");

@@ -156,8 +156,8 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
-      <AdditionalIncludeDirectories>./..;..\..\;.\..\..\DirectX9\Include;.\..\..\enginelibs\3dx\include;.\..\..\boost_1_58_0\;.\..\..\zoneserver\GameObjects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NEW_TEAM;NEW_SKILL;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./..;..\..\;.\..\..\DirectX9\Include;.\..\..\enginelibs\3dx\include;.\..\..\boost_1_58_0\;.\..\..\zoneserver\GameObjects;..\..\protobuf;..\..\tolua++;C:\Program Files (x86)\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NEW_TEAM;NEW_SKILL;_CRT_SECURE_NO_DEPRECATE;LUA_COMPAT_5_1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>Sync</ExceptionHandling>

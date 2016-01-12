@@ -566,7 +566,7 @@ int CSSanGuoFunc::L_SynPlayerDataSG(lua_State *L)	//玩家首次登陆同步脚本数据
 		return 0;
 	}
 	SADATASYN_FIRST msg;
-	size_t nlenth = luaL_getn(L, 1);
+	size_t nlenth = luaL_len(L, 1);
 
 	msg.lenth = nlenth;
 	for (int i = 0; i < nlenth; i++)
@@ -592,7 +592,7 @@ int CSSanGuoFunc::L_SynNotificationDataSG(lua_State *L)
 	if (!lua_istable(L, 1))
 		return 0;
 
-	size_t nlenth = luaL_getn(L, 1);
+	size_t nlenth = luaL_len(L, 1);
 
 	if (nlenth == 0)
 		return 0;
@@ -736,7 +736,7 @@ int CSSanGuoFunc::L_SynHeroExtendsData(lua_State *L)
 			continue;
 		}
 
-		subTableSize = luaL_getn(L, -1);
+		subTableSize = luaL_len(L, -1);
 		if (subTableSize == 0)
 		{
 			lua_pop(L, stackSize);

@@ -12,6 +12,7 @@
 #include "SceneMap.h"
 #include "Transformers.h"
 #include "ArenaMap.h"
+#include "../zoneserver/Oldfunction.h"
 class   CPlayer;
 class  CNewPlayer;
 class CLuckyTimeSystem;
@@ -151,6 +152,7 @@ private:
 	DWORD		m_dgwordTick;
 	GLOBALBLESSINFO m_GlobalInfo;
 	std::shared_ptr<CLuckyTimeSystem> m_ptrLuckySystem;
+	COldfunction  *m_poldfunction;
 public:
 
     TeamManager m_TeamManager;

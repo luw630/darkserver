@@ -75,7 +75,7 @@
 extern "C" {
 #include "lauxlib.h"
 }
-
+#include "../../zoneserver/zoneserver/Oldfunction.h"
 #include "NewPlayer.h"
 
 
@@ -3759,305 +3759,21 @@ int CScriptManager::L_CheckAddGoods(lua_State* L)
 BOOL CScriptManager::RegisterFunc()
 {
 	RegisterFunction("DoFile", L_DoFile);
-
+	 
 	RegisterFunction("rfalse", L_rfalse);
 	RegisterFunction("RFalse", L_RFalse); 
 	RegisterFunction("GetStartServerTime", L_GetStartServerTime);
-	RegisterFunction("GiveExp", L_giveExp); //‘ˆº”ÕÊº“æ≠—È
-	RegisterFunction("fpGiveExp", L_fpgiveExp); //‘ˆº”ÕÊº“æ≠—È
-	RegisterFunction("GiveGoods", L_giveGoods);
-	RegisterFunction("GiveMoney", L_giveMoney);
-	RegisterFunction("GiveSp", L_giveSp);
-	RegisterFunction("GiveMount", L_giveMount);
-	RegisterFunction("GivePet", L_givePet);
-	RegisterFunction("GiveFightPet", L_giveFightPet);
-
-	RegisterFunction("ClearPlayerCSItem", L_ClearPlayerCSItem);
-	//RegisterFunction("MonsterAI", L_monsterai);
-	RegisterFunction("FollowLoadItem",L_FollowLoadItem);
-	RegisterFunction("LoadFollowMenuInfo",L_LoadFollowMenuInfo);
-	RegisterFunction("ClearFollowShop",L_ClearFollowShop);
-	RegisterFunction("LoadItem", L_loaditem);
-	RegisterFunction("SetNpcGoodCount", L_setnpcgoodscount);
-	//RegisterFunction("CreateMonster", L_createmonster);
-	//RegisterFunction("RemoveCurrObj", L_removecurrobj);
-	RegisterFunction("DelObject", L_delobject);
-	RegisterFunction("GetAttribute", L_getAttribute);
-	RegisterFunction("SetAttribute", L_setAttribute);
-	RegisterFunction("Activate", L_activate);
-	RegisterFunction("SetMessage", L_setmessage);
-	//RegisterFunction("AddBlood", L_addblood);
-	RegisterFunction("SetMessageA", L_setmessageA);
-	//RegisterFunction("AddTask", L_addtask);
-	//RegisterFunction("BuyTask", L_buytask);
-	//RegisterFunction("CheckTask", L_checktask);
-	//RegisterFunction("GetNeedBlank", L_GetNeedBlank);
-	RegisterFunction("CheckGoods", L_checkgoods);
-	//RegisterFunction("CheckMoney", L_checkmoney);
-	RegisterFunction("GetItemNum", L_getitemnum);
-	//RegisterFunction("DelTask", L_deltask);
-	RegisterFunction("GetPlayerData", L_getplayerdata);
-	RegisterFunction("NewSetPlayerProperty", L_SetPlayerProperty);
-	RegisterFunction("SetPlayerObject", L_SetPlayerObject);
-	RegisterFunction("GetPlayerSID", L_GetPlayerSID);
-	RegisterFunction("GetPlayerGID", L_getplayerGID);
-	RegisterFunction("SetPlayerData", L_setplayerdata);
-	RegisterFunction("GetMonsterData", L_getmonsterdata);
-	RegisterFunction("SetMonsterData",L_setmonsterdata);
-	RegisterFunction("GetNpcData", L_getnpcdata);
-	RegisterFunction("SetMessageB", L_setmessageB);
-	RegisterFunction("PlayCG", L_playcg);
-	RegisterFunction("Sub_TaskNum", L_subtasknum);
-	RegisterFunction("GetTaskData", L_gettaskdata);
-	RegisterFunction("GetForgeData", L_getforgedata);
-	RegisterFunction("GetGoodsData", L_getgoodsdata);
-	RegisterFunction("SetMessageC", L_setmessageC);
-	RegisterFunction("rint", L_rint);
-	RegisterFunction("PutPlayerTo", L_putplayerto);
-	RegisterFunction("PutPlayerFromDynamic", L_putplayerfromdynamic); 
-	RegisterFunction("PutPlayerBack", L_putplayerback);
-	RegisterFunction("ReItem", L_reitem);
-	RegisterFunction("isFull", L_isfull);
-	RegisterFunction("isFullNum", L_isFullNum);
-	RegisterFunction("SetMessageR", L_setmessageR);
-	RegisterFunction("ActiveSkill", L_activeskill);
-	RegisterFunction("ActiveTempSkill",L_activeTempskill);
-	RegisterFunction("CoolingTempSkill",L_CoolingTempSkill);
-	RegisterFunction("SendTemplateSkill",L_SendTemplateSkill);
-	RegisterFunction("GetEventID",L_GetEventID);
-	RegisterFunction("ActiveTelegry", L_activetelegry);
-	RegisterFunction("ActivePackage", L_ActivePackage);
-	RegisterFunction("SendActivePackage", L_SendActivePackage);
-
-	RegisterFunction("Zero", L_zero);
-	RegisterFunction("TeachGest", L_teachgest);
-	RegisterFunction("PayThePlayer", L_paytheplayer);
-	RegisterFunction("SetTaskString", L_settaskstring);
-	RegisterFunction("CheckMoreItem",L_checkmoreitem);
-	RegisterFunction("GetTelergy", L_gettelergy);
-	RegisterFunction("GetTaskItemName", L_gettaskitemname);
-	RegisterFunction("GetItemName", L_getitemname);
-	RegisterFunction("GetMountFoodAddExp", L_getMountFoodAddExp);
-	RegisterFunction("LostItems", L_lostitems);
-	RegisterFunction("FillCopyItem",  L_fillcopyitem);
-	RegisterFunction("GetScores", L_getscores);
-	RegisterFunction("SetRegionPKType", L_setregionpktype);    
-	RegisterFunction("BroadCast", L_broadcast);  
 	RegisterFunction("SetObjectListSize", L_setlistsize);
-	//RegisterFunction("CreateNpc", L_createnpc);
-	RegisterFunction("GetCurTime", L_getcurtime);
-	RegisterFunction("GetCurTimeInMin", L_getcurtimeinmin);
-	RegisterFunction("GetCurTimeA", L_getcurtimeA);
-	RegisterFunction("CompileFile", L_compilefile);
-	RegisterFunction("GetServerTime", L_GetServerTime);
-	RegisterFunction("GetGestLevel", L_getgestlevel);
-	RegisterFunction("SetGestLevel", L_setgestlevel);
-	RegisterFunction("DelItemByPos", L_delitembypos);
-	RegisterFunction("RequareFactionName", L_requarefactionname);
-	RegisterFunction("CreateFaction", L_createfaction);
-	RegisterFunction("LeaveFaction", L_leavefaction);
-	RegisterFunction("GetKillInfo", L_GetKillInfo);
-	RegisterFunction("TeachTeamGest", L_teachteamgest);
-	RegisterFunction("SetPlayerScriptState", L_setplayerscriptstate);
-	RegisterFunction("GetPlayerScriptState", L_getplayerscriptstate);
-	RegisterFunction("SetPlayer", L_setplayer);
-	RegisterFunction("SetPlayerIcon", L_setplayericon);
-
-	RegisterFunction("SetMultipleTime", L_setmultipletime);    
-	RegisterFunction("SetNMultiple", L_setnmultiple);       
-	RegisterFunction("GetMultipleTime", L_getmultipletime);    
-	RegisterFunction("GetMulLeaveTime", L_getmulleavetime);    
-	RegisterFunction("SetLoneManValue", L_setlonemanvalue);  
-	RegisterFunction("CheckWeekForMul", L_checkweekformul);
-	RegisterFunction("GetCurTelergy", L_getcurtelergy);       
-	RegisterFunction("SetCurTelergyVal", L_setcurtelergyval); 
-	RegisterFunction("TalkToPlayer", L_talktoplayer);
-	RegisterFunction("GetTelergyData", L_gettelergydata);
-
-	RegisterFunction("CreateRegion", L_CreateRegion);  
-	RegisterFunction("CheckCardID",L_QueryEncouragement);
-	RegisterFunction("GetMultipleTimeInfo", L_getmultipletimeinfo);
-	RegisterFunction("GetTeamInfo", L_GetTeamInfo);
-	RegisterFunction("GetTeamLeaderSID", L_GetTeamLeaderSID);
-	RegisterFunction("DeleteTeamMember", L_DeleteTeamMember);
-
-	RegisterFunction( "ViewFactionMsg", L_ViewFactionMsg );
-	RegisterFunction( "GetMemberInfo", L_GetMemberInfo );
-	RegisterFunction( "GetJoinTime", L_GetJoinTime );
-
-	// RegisterFunction( "GetFactionRes", L_GetFactionRes );
-	RegisterFunction( "OperFacRes", L_OperFacRes );
-	RegisterFunction( "SetPlayerAmassCent", L_SetPlayerAmassCent );
-	RegisterFunction( "AddPlayerAmassCent", L_AddPlayerAmassCent );
-	RegisterFunction( "GetMarrowInfo", L_GetMarrowInfo );
-	RegisterFunction( "GetRegionInfo", L_GetRegionInfo );
-	RegisterFunction( "SendBoardCastMsg", L_SendBoardCastMsg );
-	RegisterFunction( "AddPlayerProperty", L_AddPlayerProperty );
-	RegisterFunction( "AddMountsProperty", L_AddMountsProperty );	
-
-	RegisterFunction( "StartCollect", L_StartCollection );
-	RegisterFunction( "MakeNpcDisappear", L_MakeNpcDisappear);
-	RegisterFunction("SetTips", L_settipmsg);
-	RegisterFunction("Dismount", L_Dismount);
-
-	// ∏±±æœ‡πÿΩ”ø⁄
-	RegisterFunction("LockPlayer", L_LockPlayer);
-	RegisterFunction("UnLockPlayer", L_UnLockPlayer);
-	RegisterFunction("GetDynamicScenePlayerNumber", L_GetDynamicScenePlayerNumber);
-	RegisterFunction("DestroyReginDynamicScene", L_DestroyDynamicScene);
-	RegisterFunction("BackFromDynamicScene", L_BackFromDynamicScene);
-	RegisterFunction("SetPlyaerCopySceneState", L_SetPlyaerCopySceneState);
-	RegisterFunction("GetCurCopyScenesGID", L_GetCurCopyScenesGID);
-	RegisterFunction("CheckAddGoods", L_CheckAddGoods);
-
-	RegisterFunction( "MonsterAddHpEvent", L_MonsterAddHpEvent);
-	RegisterFunction( "MonsterAddBuffEvent", L_MonsterAddBuffEvent);
-
-	// œ¿»˝≤÷ø‚œµÕ≥
-	RegisterFunction("OpenWareHouse", L_OpenWareHouse);
-
-	RegisterFunction("AddFightBuff", L_AddFightBuff);
-	RegisterFunction("DelFightBuffType", L_DelFightBuffType);
-	RegisterFunction("PlayerAddBuff", L_PlayerAddBuff);
-	RegisterFunction("CheckWindMove", L_CheckWindMove);
-	RegisterFunction("StartWindMove", L_StartWindMove);
-	RegisterFunction("SendAttackMsg", L_SendAttackMsg);	
-
-	RegisterFunction("loaddropgoods", L_loaddropgoods);
-	RegisterFunction("loaddropmonsterid", L_loaddropmonsterid);
-	RegisterFunction("loaddroptime", L_loaddroptime);
-	RegisterFunction("loaddropgoodsnum", L_loaddropgoodsnum);
-
-	///π÷ŒÔ÷±Ω”µÙ¬‰ŒÔ∆∑
-	RegisterFunction("monsterdropitem", L_monsterdropitem);
-	RegisterFunction("getattackername",L_getattackername);
-	//π÷ŒÔ∏ΩΩ¸∫∞ª∞
-	RegisterFunction("MonsterTalk",L_monstertalk);
-	//œ¿“Âµ¿»˝∂”ŒÈœ‡πÿ
-	RegisterFunction("GetPlayerTeam",L_getplayerteam);
-	RegisterFunction("GetPlayerTeamName",L_getplayerteamname);
-	//œ¿“Âµ¿»˝–¬‘ˆ
-	RegisterFunction("Setplayerproperty", L_setplayerproperty);
-	RegisterFunction("creategift", L_creategift);
-	RegisterFunction("usegift", L_usegift);
-	//2014.2.22 Add
-	RegisterFunction("AddGiftJudgePackage", L_AddGiftJudgePackage);
-
-	RegisterFunction("QuestUpdateBoss", L_QuestUpdateBoss);
-	RegisterFunction("setplayerpoint",L_setplayerpoint);
-	RegisterFunction("getplayerSkillproperty",L_getplayerSkillproperty); //ªÒ»°ººƒ‹µ»º∂œ‡πÿ
-	RegisterFunction("setactivityNotice",L_setactivityNotice);//…Ë÷√»’≥£ªÓ∂Ø
-	RegisterFunction("GetLiveMonster",L_GetLiveMonster);//µ√µΩ÷∏∂®≥°æ∞π÷ŒÔ ˝¡ø
-
-	//…Ë÷√ÕÊº“∫√”—∂»L_GetRegionCount
-	RegisterFunction("SetPlayerDegree",L_setplayerDegree);
-	//œ¿øÕ—ßœ∞ººƒ‹
-	RegisterFunction("fpActiveSkill", L_fpactiveskill);
-	RegisterFunction("FightPetAddBuff", L_FightPetAddBuff);//œ¿øÕº”—™¿∂buff
-	//ÃÂ÷ œµÕ≥
-	RegisterFunction("GrowTiZhi",L_tizhiGrow);
-	RegisterFunction("UpgradeTiZhi",L_tizhiUpgrade);
-	//˜Ë˜Î±€
-	RegisterFunction("ActiveKylinArm",L_kylinArmActive);
-	RegisterFunction("AddYuanqi",L_addYuanqi);
-
-	// –ƒ∑®…˝º∂œ˚∫ƒ ∫Õ ∏Ωº” Ù–‘º∆À„π´ Ω
-	RegisterFunction("ConsumeTelergy",L_ConsumeTelergy);
-	RegisterFunction("ConsumeTelergyProperty", L_ConsumeTelergyProperty);
-
-	//∆Ì∏£
-	RegisterFunction("ProcessBlessInfo",L_ProcessBlessInfo);
-	RegisterFunction("FillBlessData",L_FillBlessData);
-	RegisterFunction("OnBlessResult",L_OnBlessResult);
-	RegisterFunction("OnPlayerBlessTime",L_OnPlayerBlessTime);
-	RegisterFunction("GetPlayerMoney",L_GetPlayerMoney);
-	RegisterFunction("ChangeMoney",L_ChangeMoney);
-	RegisterFunction("OnErrorStopBless",L_OnErrorStopBless);
-	RegisterFunction("IsHaveSpaceCell",L_IsHaveSpaceCell);
-	RegisterFunction("OnProcessNotice",L_OnProcessNotice);
-	//–¬ ÷‘⁄œﬂ¿Ò∞¸œ‡πÿ
-	/*	RegisterFunction("StopTime",L_StopTime);
-	RegisterFunction("StartTime",L_StartTime);
-	RegisterFunction("CleanTime",L_CleanTime);
-	RegisterFunction("IsStopTime",L_IsStopTime);*/	
-	RegisterFunction("ResetOnlineGiftState",L_ResetOnlineGiftState);	
-	RegisterFunction("GetOnlineGiftState",L_GetOnlineGiftState);
-	RegisterFunction("UpdateOnlineGiftState",L_UpdateOnlineGiftState);
-	RegisterFunction("GetOnlineBeginTime",L_GetOnlineBeginTime);	
-	RegisterFunction("GetNowTime",L_GetNowTime);	
-
-	//µπº∆ ±Ω±¿¯œ‡πÿ
-	RegisterFunction("GetCountDownGiftState",L_GetCountDownGiftState);
-	RegisterFunction("ResetCountDownGiftState",L_ResetCountDownGiftState);	
-	RegisterFunction("UpdateCountDownGiftState",L_UpdateCountDownGiftState);
-	RegisterFunction("GetCountDownBeginTime",L_GetCountDownGiftBeginTime);
-	RegisterFunction("ResetCountDownGiftTime",L_ResetCountDownGiftTime);
-
-
-	RegisterFunction("SendBufferToClinet",L_SendBufferToClinet);	
-	RegisterFunction("SendItemList",L_SendItemList);	
-	RegisterFunction("SendGiftSucceed",L_SendGiftSucceed);	
-	RegisterFunction("GetPlayerTime",L_GetPlayerTime);
-	RegisterFunction("SetPlayerVipLevel",L_SetPlayerVipLevel);	
-
-	RegisterFunction("SaveToPlayerData",L_SaveToPlayerData);	
-	RegisterFunction("LoadFromPlayerData",L_LoadFromPlayerData);	
-	RegisterFunction("AddPlayerRoseRecod",L_AddPlayerRoseRecod);
-	RegisterFunction("LimitForHuiShenDan", L_HuiShenDanRecall);
-	RegisterFunction("giveItemList",L_giveItemList);
-	RegisterFunction("CheckPlayerMoney",L_CheckPlayerMoney);
-
-	// »´◊∞±∏ Ù–‘º”≥…
-	RegisterFunction("ModifyPlayerAttributes", L_ModifyPlayerAttributes);
-
-	RegisterFunction("LoadPlayerModifValue",L_LoadPlayerModifValue);
-	RegisterFunction("UnLoadPlayerModifValue",L_UnLoadPlayerModifValue);
-	RegisterFunction("OnPlayerClearBuff",L_PlayerClearBuff);
-	RegisterFunction("OnBackFightPet",L_OnBackFightPet);
-	RegisterFunction("LuaRandRange",L_LuaRandRange);
-	RegisterFunction("SetCrilial",L_SetCrilial);
-	RegisterFunction("LoadProtectInfo",L_LoadProtectInfo);
-
-	RegisterFunction("OnPartEnterNum",L_OnPartEnterNum);
-	RegisterFunction("OnTeamPartEnterNum",L_OnTeamPartEnterNum);
-	RegisterFunction("IsPersonalEnterPart",L_IsPersonalEnterPart);
-	RegisterFunction("IsTeamEnterPart",L_IsTeamEnterPart);
-	RegisterFunction("IsNonTeamPartEnter",L_IsNonTeamPartEnter);
-	RegisterFunction("SetGmakeParm",L_SetGmakeParm);
-	RegisterFunction("GetGmakeParm",L_GetGmakeParm);
-
-	RegisterFunction("SetJingMaiShareExpTimes",L_SetJingMaiShareExpTimes);
-
-
-
-	RegisterFunction("logtable",L_logtable);
-	RegisterFunction("LoadPlayerData",L_LoadPlayerData);
-	RegisterFunction("SavePlayerData",L_SavePlayerData);
-	RegisterFunction("SendPlayerReward",L_SendPlayerReward);
-	RegisterFunction("GetActivePackageNum",L_GetActivePackageNum);
-	RegisterFunction("SavePlayerTable",L_SavePlayerTable);
-	RegisterFunction("LoadPlayerTable",L_LoadPlayerTable);
-	RegisterFunction("PlayerProcessQuestSkill", L_ProcessQuestSkill);
-	
-	RegisterFunction("CI_GetStartTime", L_GetServerStartTime);//ªÒ»°∑˛ŒÒ∆˜∆Ù∂Ø ±º‰
-	LuaRegisterFunc();
-
-	ExtraScriptFunctions::RegisterScriptFunctions();
-
+	RegisterFunction("CreateRegion", L_CreateRegion);
+	RegisterFunction("SendScriptData", L_SendScriptData);
 	CSOtherFunc::CreateShadow();
-	CSPlayerFunc::CreateShadow();
-	CSNPCFunc::CreateShadow();
-	CSMonsterFunc::CreateShadow();
-	//20150122 wk »˝π˙∂¿¡¢Ω≈±æƒ£øÈ
-	CSSanGuoFunc::CreateShadow();
-	// »’≥£ ±º‰π‹¿Ì∆˜
-	RegisterFunction("ReadEveryDayManagerTime",L_ReadEveryDayManagerTime);
-	RegisterFunction("WriteEveryDayManagerTime",L_WriteEveryDayManagerTime);
-
-	//tolua_MyClass_open(ls);
-
 	rfalse(2, 1, "Register Lua functions  OK!");
 	return TRUE;
+}
+
+void CScriptManager::LuaRegisterFunc()
+{
+	return;
 }
 
 BOOL CScriptManager::DoFunc(const char *szFuncName, DWORD wID, DWORD dwChoseID)
@@ -6745,7 +6461,7 @@ int CScriptManager::L_SendSceneMsg( lua_State *L )
 
 	if (lua_istable(L,3))
 	{
-		int nsize =  luaL_getn(L, 3);
+		int nsize =  luaL_len(L, 3);
 		int *tempstar = new int[nsize];
 		for(int i = 0;i<nsize;i++)
 		{
@@ -6801,7 +6517,7 @@ int CScriptManager::L_SendSelectSceneMsg( lua_State *L )
 	}
 	if (lua_istable(L,2))
 	{
-		int nsize =  luaL_getn(L, 2);
+		int nsize =  luaL_len(L, 2);
 		int *itemreward = new int[nsize];
 		for(int i = 0;i<nsize;i++)
 		{
@@ -6821,7 +6537,7 @@ int CScriptManager::L_SendSelectSceneMsg( lua_State *L )
 	}
 	if (lua_istable(L,3))
 	{
-		int nsize =  luaL_getn(L, 3);
+		int nsize =  luaL_len(L, 3);
 		int *itemreward = new int[nsize];
 		for(int i = 0;i<nsize;i++)
 		{
@@ -7101,7 +6817,7 @@ int CScriptManager::L_GetTableLenth( lua_State *L )
 	{
 		return 0;
 	}
-	int nsize = luaL_getn(L,1);
+	int nsize = luaL_len(L,1);
 	lua_pushnumber(L,nsize);
 	return 1;
 }
@@ -7178,7 +6894,7 @@ int CScriptManager::L_SendRewardMsg( lua_State *L )
 
 	if (lua_istable(L,2))
 	{
-		int nsize =  luaL_getn(L, 2);
+		int nsize =  luaL_len(L, 2);
 		int *itemreward = new int[nsize];
 		for(int i = 0;i<nsize;i++)
 		{
@@ -7244,7 +6960,7 @@ int CScriptManager::L_SendWinRewardMsg( lua_State *L )
 	}
 	if (lua_istable(L,3))
 	{
-		int nsize =  luaL_getn(L, 3);
+		int nsize =  luaL_len(L, 3);
 		int *itemreward = new int[nsize];
 		for(int i = 0;i<nsize;i++)
 		{
@@ -7315,7 +7031,7 @@ int CScriptManager::L_ProcessQuestSkill( lua_State *L )
 	if (!lua_istable(L,1))return 0;
 	//if (!g_Script.m_pPlayer)return 0;
 
-	int nsize = luaL_getn(L,1);
+	int nsize = luaL_len(L,1);
 	SQuestSkillMultiple_C2S_MsgBody questMultipleskillmsg;
 	GetTableNumber(L, 1, "AttackerGID", questMultipleskillmsg.mAttackerGID);
 	CPlayer *pPlayer = (CPlayer*)GetPlayerByGID(questMultipleskillmsg.mAttackerGID)->DynamicCast(IID_PLAYER);
@@ -7589,7 +7305,7 @@ int CScriptManager::L_SendSceneListMsg( lua_State *L )
 		scenelist.wCurrentScene = static_cast<WORD>(lua_tonumber(L,2));
 		if (lua_istable(L,3))
 		{
-			int nsize =  luaL_getn(L, 3);
+			int nsize =  luaL_len(L, 3);
 			int *nbhighlight = (int*)scenelist.bhighlight;
 			for (int i = 0;i<nsize;i++)
 			{
@@ -8103,266 +7819,7 @@ int CScriptManager::L_GetPlayerIP(lua_State *L)
 	return 0;
 }
 
-void CScriptManager::LuaRegisterFunc()
-{
-#define LuaRegisterFunction( _funcname ) RegisterFunction( #_funcname, CScriptManager::L_##_funcname );
-	LuaRegisterFunction(SendSceneMsg);
-	LuaRegisterFunction(SendSelectSceneMsg);
-	LuaRegisterFunction(SendEnterSceneMsg);
-	LuaRegisterFunction(CreateScene);
-	LuaRegisterFunction(GetTableLenth);
-	LuaRegisterFunction(GetObjectType);
-	LuaRegisterFunction(DestroyScene);
-	LuaRegisterFunction(DestroyDailyArea); 
-	LuaRegisterFunction(ResponseEntryDailyArea); 
-	LuaRegisterFunction(SendDailyAwardToPlayer); 
-	LuaRegisterFunction(GetPlayerInDailyArea); 
-	LuaRegisterFunction(SendNextBatchMonsterInf); 
-	LuaRegisterFunction(SendDailyOpenFlag);
-	LuaRegisterFunction(BroadCastDailyOpenFlag); 
-	LuaRegisterFunction(SendJuLongShanAward); 
-	LuaRegisterFunction(SendTarotBaseData);
-	LuaRegisterFunction(SendAddTurnOnTarotData);
-	LuaRegisterFunction(SendPlayerGetTarotAwardRes);
-	LuaRegisterFunction(SendResetTurnOnTarotData);
-	LuaRegisterFunction(SendCurDayOnlineData);
-	LuaRegisterFunction(SendCurDayOnlineLong);
-	LuaRegisterFunction(SendCurDayOnlineGetAwardRes);
-	LuaRegisterFunction(NotifyCurDayOnlineReset);
-	LuaRegisterFunction(NotifyCurDayOnlineAddNewAward); 
-	LuaRegisterFunction(GetPlayerAddUpLoginTime);
-	LuaRegisterFunction(SendPlayerRFBInf);
-	LuaRegisterFunction(SendGetRFBAwardRes);
-	LuaRegisterFunction(NotifyRFBCanGetNewAward);
-	LuaRegisterFunction(SendPlayerLRInf);
-	LuaRegisterFunction(SendGetLRAwardRes);
-	LuaRegisterFunction(NotifyLRCanGetNewAward);
-	LuaRegisterFunction(BroadCastLRResidueTimes);
-	LuaRegisterFunction(SendFWInf);
-	LuaRegisterFunction(SendPlayerFWInf);
-	LuaRegisterFunction(SendFWSelectGoodsInf);
-	LuaRegisterFunction(SendFWGEtAwardRes);
-	LuaRegisterFunction(BroadCastFWUptRecordInf); 
-	LuaRegisterFunction(SynRechargeTatolGlod);
-	LuaRegisterFunction(SendPlayerAddUpLogintime);
-	LuaRegisterFunction(SendPlayerAddUpLoginInf);
-	LuaRegisterFunction(NotifyAddUpLoginAddNewAward);
-	LuaRegisterFunction(SendAddUpLoginGetAwardRes);
-	LuaRegisterFunction(SendSignInAwardInfo);
-	LuaRegisterFunction(SendGetSignInAwardResult); 
-	LuaRegisterFunction(GetPlayerSchool);
-	LuaRegisterFunction(SendShopListInfo); 
-	LuaRegisterFunction(SendShopGoodsListInfo);
-	LuaRegisterFunction(NotityGoodsUpdated);
-	LuaRegisterFunction(SendBuyGoodsRes);  
-	LuaRegisterFunction(GetGoodsIndexByTriIndex);
-	LuaRegisterFunction(GetTriIndexByGoodsIndex); 
-	LuaRegisterFunction(SendShopCountDownRes); 
-	LuaRegisterFunction(SendGoodsInfo);
-	LuaRegisterFunction(FirstRegCallSetPlayerSkill); 
-	LuaRegisterFunction(SetCurVipFactor);
-	LuaRegisterFunction(SendVipStateInf);
-	LuaRegisterFunction(SendGiftInfo);
-	LuaRegisterFunction(SendGetOrButGiftRes); 
-	LuaRegisterFunction(AddSomeGoods); 
-	LuaRegisterFunction(GetPlayerPetNum);
-	LuaRegisterFunction(AddNewPet);
-	LuaRegisterFunction(SendCardPetInf); 
-	LuaRegisterFunction(SendPetCardInf); 
-	LuaRegisterFunction(ExceSwallowPetOpt); 
-	LuaRegisterFunction(PetBreachOpt);
-	LuaRegisterFunction(PetRenameOpt);
-	LuaRegisterFunction(SendPetMergerInf);
-	LuaRegisterFunction(SendPetBreachInf);
-	LuaRegisterFunction(SendPetRenameInf); 
-	LuaRegisterFunction(GetPetIDAndStar);  
-	LuaRegisterFunction(PetStudySkillByBook); 
-	LuaRegisterFunction(ActivePetSkill);
-	LuaRegisterFunction(GetFightObjActionID);
-	LuaRegisterFunction(PetSkillCfg); 
-	LuaRegisterFunction(CalAndSendPetExp); 
-	LuaRegisterFunction(JudgePetDurableIsZero);
-	LuaRegisterFunction(SendResumeDurableNeedGold);
-	LuaRegisterFunction(SendGoldResumeDurableRes); 
-	LuaRegisterFunction(UptPetDurable);
-	LuaRegisterFunction(NotifyPetDurableUpt);
-	LuaRegisterFunction(NotifyMsgUtf8ToAnsi); 
-	LuaRegisterFunction(GetFirstPayFlag);
-	LuaRegisterFunction(SetFirstPayFlag); 
-	LuaRegisterFunction(GetEveryDayPayFlag); 
-	LuaRegisterFunction(SetEveryDayPayFlag);
-	LuaRegisterFunction(SendEveryDayPayAwardState);
-	LuaRegisterFunction(SendGetEDPAwardRes);
-	LuaRegisterFunction(SendRewardMsg);
-	LuaRegisterFunction(GetBlankCell); 
-	LuaRegisterFunction(SendRandListData); 
-	LuaRegisterFunction(SendRandAwardFlag); 
-	LuaRegisterFunction(SendGetRandAwardRes); 
-	LuaRegisterFunction(SendActivenessInfo);
-	LuaRegisterFunction(SendGetActivenessAwardRes);
-	LuaRegisterFunction(cleanplayer);
-	LuaRegisterFunction(SendWinRewardMsg);
-	LuaRegisterFunction(GetSceneCount);
-	LuaRegisterFunction(SetQusetSkillMsg);
-	LuaRegisterFunction(TimeGetTime);
-	//LuaRegisterFunction(ProcessQuestSkill);
-	LuaRegisterFunction(GetSkillIDBySkillIndex);
-	LuaRegisterFunction(MystringFormat);
-	LuaRegisterFunction(GetPlayerInScene);
-	LuaRegisterFunction(SendPassFailMsg);
-	LuaRegisterFunction(PlayerRelive);
-	LuaRegisterFunction(SendSDMsg);
-	LuaRegisterFunction(SendSDReward);
-	LuaRegisterFunction(Removeobj);
-	LuaRegisterFunction(SendPlayerDeadAddMsg);
-	LuaRegisterFunction(SendReliveResult);
-	LuaRegisterFunction(MystringFormat);
-	LuaRegisterFunction(SetCacheSkill);
-	LuaRegisterFunction(SendSceneListMsg);
-	LuaRegisterFunction(GetObjectData);
-	LuaRegisterFunction(GetEquipment);
-	LuaRegisterFunction(SendIntensifyInfo);
-	LuaRegisterFunction(SetEquipment);
-	LuaRegisterFunction(IsLockedEquipColumnCell);
-	LuaRegisterFunction(LockEquipColumnCell);
-	LuaRegisterFunction(SendIntensifyResult);
-	LuaRegisterFunction(SendKeYinResult);	
-	LuaRegisterFunction(GetObjectFightData);
-	LuaRegisterFunction(SendObjectDamage);
-	LuaRegisterFunction(SetObjectDamage);
-	LuaRegisterFunction(GetPlayerIP);
-	LuaRegisterFunction(SendSceneFinishMsg);
-	LuaRegisterFunction(SendQualityInfo);
-	LuaRegisterFunction(DeleteItem);
-	LuaRegisterFunction(DelEquipment);
-	LuaRegisterFunction(AddItem);
-	LuaRegisterFunction(RecvUseItem);
-	LuaRegisterFunction(SendQualityResult);
-	LuaRegisterFunction(GetItemBaseData);
-	LuaRegisterFunction(GetIsNewPlayer);
-	LuaRegisterFunction(SetIsNewPlayer);
-	LuaRegisterFunction(KillAllMonster);
-	LuaRegisterFunction(SendCleanColdResult);
-	LuaRegisterFunction(SendRiseStarInfo);
-	LuaRegisterFunction(SendRiseStarResult);
-	LuaRegisterFunction(ChangeObjectData);
-	LuaRegisterFunction(SetObjectData);
-	LuaRegisterFunction(SendEquiptKeYinInfo);
-	LuaRegisterFunction(SendEquipJDingResult);
-	LuaRegisterFunction(SendEquipJDingInfo);
-	LuaRegisterFunction(SendEquipJDingColor);
-	LuaRegisterFunction(SendKeYinChangeData);
-	LuaRegisterFunction(SetTaskFinish);
-	LuaRegisterFunction(ReloadPlayerData);
-	LuaRegisterFunction(InitPlayerData);
-	LuaRegisterFunction(SendSuitcondition);
-	LuaRegisterFunction(SendDebrisinfo);
-	LuaRegisterFunction(SendDebrisAward);
-	LuaRegisterFunction(SetTransformersLevel);
-	LuaRegisterFunction(GetTransformersLevel);
-	LuaRegisterFunction(OnSendTransformersInfoMsg);
-	LuaRegisterFunction(SendTransformersSwitch);
-	LuaRegisterFunction(SendMyState);
-	LuaRegisterFunction(InitPlayerProperty);
-	LuaRegisterFunction(GetCurrentSkillLevel);
-	LuaRegisterFunction(SetCurrentSkillLevel);
-	LuaRegisterFunction(GetSkillLevel);
-	LuaRegisterFunction(SetSkillLevel);
-	LuaRegisterFunction(GetSkillProficiency);
-	LuaRegisterFunction(AddSkillProficiency);
-	LuaRegisterFunction(SendTransformersSkillInfo);
-	LuaRegisterFunction(CheckFightState);
-	LuaRegisterFunction(LoadTable);
-	LuaRegisterFunction(SaveTable);
-	LuaRegisterFunction(TaskKillMonster);
-	LuaRegisterFunction(AddPlayerXinYangProperty);
-	LuaRegisterFunction(SendBatchesMonster);
-	LuaRegisterFunction(Syneffects);
-	LuaRegisterFunction(CopyFromPlayer);
-	LuaRegisterFunction(CopyPlayerToTable);
-	LuaRegisterFunction(GetObjectReginType);
-	LuaRegisterFunction(GetSkillDamageRate);
-	LuaRegisterFunction(SendArenaInitMsg);
-	LuaRegisterFunction(SetStopTracing);
-	LuaRegisterFunction(SendSceneSDListMsg);	//add by ly 2014/3/25
-	LuaRegisterFunction(KickPlayer);
-	LuaRegisterFunction(InitNewPlayerGloryInfo);
-	LuaRegisterFunction(SendClientGloryInfo);
-	LuaRegisterFunction(QstGetGloryAward); 
-	LuaRegisterFunction(QstHandleTitleMsg); 
-	LuaRegisterFunction(SetKillAllMonster);
-	LuaRegisterFunction(SendArenaRewardMsg);
-	LuaRegisterFunction(SendArenaQuestMsg);
-	LuaRegisterFunction(getmonsterdatanew);
-	LuaRegisterFunction(GetBuffData);
-	LuaRegisterFunction(MoveToPos);
-	LuaRegisterFunction(GetDynamicRegionID);
-	LuaRegisterFunction(GetPetOwer);
-	LuaRegisterFunction(CheckObject);
-	LuaRegisterFunction(GetSceneRegionID);
 
-
-	LuaRegisterFunction(AddBuff);
-	LuaRegisterFunction(SetPlayerGMLevel);
-	LuaRegisterFunction(BaseRelive);
-	LuaRegisterFunction(CreateMonsterRegion);
-	//LuaRegisterFunction(SetMapCollision);
-	LuaRegisterFunction(GetOnlinePlayerNum);
-	LuaRegisterFunction(SendMessageToAllPlayer);
-	LuaRegisterFunction(PutPlayerToDyncRegion); 
-	LuaRegisterFunction(SendSysCall); 
-	LuaRegisterFunction(SendGmExceResult);
-
-	LuaRegisterFunction(ResetDailyByTime);
-	LuaRegisterFunction(ReturnDailyListInfo);
-
-	LuaRegisterFunction(SendAddFriendToList);
-	LuaRegisterFunction(SendFriendFailMsg)
-	LuaRegisterFunction(GetPlayerSidByName);
-	LuaRegisterFunction(SendFriendList);
-	LuaRegisterFunction(GetAllPlayer);
-	LuaRegisterFunction(GetAllPlayerSid);
-	LuaRegisterFunction(SendTreasureResult);
-	LuaRegisterFunction(SavePlayerToDB);
-	LuaRegisterFunction(GetServerID);
-
-	//æ¸Õ≈
-	LuaRegisterFunction(SendCreateFactionResult);
-	LuaRegisterFunction(SendJoinResult);
-	LuaRegisterFunction(SendManagerFaction);
-	LuaRegisterFunction(SendFactioninfo);
-	LuaRegisterFunction(SendFactionList);
-	LuaRegisterFunction(SDeleteFaction);
-	LuaRegisterFunction(SendSynFaction);
-	LuaRegisterFunction(SendFactionSceneList);
-	LuaRegisterFunction(SendSceneInfo);
-	LuaRegisterFunction(SendChallengeSceneMsg);
-	LuaRegisterFunction(SaveAllFactionData);
-	LuaRegisterFunction(SendInitPrayer);
-	LuaRegisterFunction(SendPrayerResult);
-	LuaRegisterFunction(SendShopItemList);
-	LuaRegisterFunction(SendShopBuyResult);
-	LuaRegisterFunction(SendMailToPlayer);
-	LuaRegisterFunction(SendFactionSceneRank);
-	LuaRegisterFunction(SendFactionSalaryData);
-	LuaRegisterFunction(SendGetSalaryResult);
-	LuaRegisterFunction(SendActivityCodeResult);
-	LuaRegisterFunction(SendScriptData);
-	LuaRegisterFunction(GetScriptData);
-	LuaRegisterFunction(SendFactionNotice);
-	LuaRegisterFunction(SendModifyNoticeResult);
-	LuaRegisterFunction(SendFactionLog);
-	LuaRegisterFunction(SendFcEmailResult);
-	LuaRegisterFunction(SendEquiptList);
-	LuaRegisterFunction(SendRqEquiptResult);
-	LuaRegisterFunction(SendRequestStatus);
-	LuaRegisterFunction(SendCanceledResult);
-
-	LuaRegisterFunction(Logout);
-
-	//LuaRegisterFunction(SendCreateFactionResult);
-#undef  LuaRegisterFunction
-}
 
 int CScriptManager::L_SendSceneFinishMsg(lua_State *L)
 {
@@ -8395,7 +7852,7 @@ int CScriptManager::L_SendQualityInfo(lua_State *L)
 		GetTableNumber(L, 1, "Success", sinfo.bQualitysuccessrate);
 		GetTableNumber(L, 1, "needLevel", sinfo.wneedLevel);
 		
-		int nsize = luaL_getn(L, 2);
+		int nsize = luaL_len(L, 2);
 		int *bmaterialBuffer = (int*)sinfo.bmaterial;
 		memset(bmaterialBuffer, 0, 512);
 		for (int i = 0; i < nsize; i++)
@@ -8955,7 +8412,7 @@ int CScriptManager::L_SendKeYinChangeData(lua_State *L)
 	if (lua_istable(L, 1))
 	{
 		
-		int nsize = luaL_getn(L, 1);
+		int nsize = luaL_len(L, 1);
 		if (nsize > 3)
 		{
 			return 0;
@@ -9025,7 +8482,7 @@ int CScriptManager::L_SendSuitcondition(lua_State *L)
 		memset(Suitcondition.wepropertyindex, 0, sizeof(WORD)* 3);
 		memset(Suitcondition.wcepropertyindex, 0, sizeof(WORD)* 3);
 
-		int nsize = luaL_getn(L, 2);
+		int nsize = luaL_len(L, 2);
 		if (nsize > EQUIP_P_MAX)
 		{
 			return 0;
@@ -9035,7 +8492,7 @@ int CScriptManager::L_SendSuitcondition(lua_State *L)
 			GetTableArrayNumber(L, 2, i + 1, Suitcondition.benough[i]);
 		}
 		
-		 nsize = luaL_getn(L, 3);
+		 nsize = luaL_len(L, 3);
 		if (nsize > 6)
 		{
 			return 0;
@@ -9052,7 +8509,7 @@ int CScriptManager::L_SendSuitcondition(lua_State *L)
 			}
 		}
 
-		nsize = luaL_getn(L, 4);
+		nsize = luaL_len(L, 4);
 		if (nsize > 6)
 		{
 			return 0;
@@ -9763,7 +9220,7 @@ int CScriptManager::L_SendClientGloryInfo(lua_State *L)
 	
 	//ªÒ»°»Ÿ“´ID∫Õ∂‘”¶µƒÕÍ≥…◊¥Ã¨ ˝◊È
 	lua_getfield(L, -1, "GloryInfArr");
-	int GloryInfArrSize = luaL_getn(L, -1);
+	int GloryInfArrSize = luaL_len(L, -1);
 	SAGloryMsg GloryMsg(GloryDot, GloryInfArrSize);
 	for (int i = 1; i <= GloryInfArrSize; i++)
 	{
@@ -9810,7 +9267,7 @@ int CScriptManager::L_QstGetGloryAward(lua_State *L)
 
 	//∏¸–¬∂‘”¶»Ÿ“´IDµƒÕÍ≥…◊¥Ã¨
 	lua_getfield(L, -1, "GloryInfArr");
-	int TableSize = luaL_getn(L, -1);
+	int TableSize = luaL_len(L, -1);
 	for (int i = 1; i <= TableSize; i++)
 	{
 		lua_rawgeti(L, -1, i);
@@ -10541,7 +9998,7 @@ int CScriptManager::L_SendArenaInitMsg(lua_State *L)
 	if (lua_istable(L,2))
 	{
 		int nindex = lua_gettop(L);
-		size_t nlenth = luaL_getn(L, 2);
+		size_t nlenth = luaL_len(L, 2);
 		for (int i = 0; i < nlenth; i++)
 		{
 			lua_rawgeti(L, 2, i + 1);
@@ -10624,7 +10081,7 @@ int CScriptManager::L_ResetDailyByTime(lua_State *L)	//ÕÊº“÷ÿ÷√“—æ≠ÕÍ≥…µƒ»’≥£ªÓ∂
 	memcpy(&PreTime, pPreT, sizeof(tm));
 	if (CurTime.tm_year > PreTime.tm_year || CurTime.tm_yday > PreTime.tm_yday) //¬˙◊„÷ÿ÷√ ±º‰£¨÷ÿ÷√ÕÊº“»’≥£ªÓ∂Ø¡–±Ì–≈œ¢
 	{
-		for (int i = 1; i <= luaL_getn(L, 3); i++)
+		for (int i = 1; i <= luaL_len(L, 3); i++)
 		{
 			lua_rawgeti(L, 3, i);
 
@@ -10656,7 +10113,7 @@ int CScriptManager::L_ReturnDailyListInfo(lua_State *L)	//ªÒ»°ÕÊº“»’≥£ªÓ∂Ø¡–±Ì–≈
 	if (!pPlayer)
 		return 0;
 	SAInitDailyMsg RetInitDailyMsg;
-	RetInitDailyMsg.m_DailyArrSize = luaL_getn(L, 2);
+	RetInitDailyMsg.m_DailyArrSize = luaL_len(L, 2);
 	RetInitDailyMsg.m_pDailyDetail = new unsigned short[RetInitDailyMsg.m_DailyArrSize];
 	RetInitDailyMsg.m_pDailyTotalTimes = new BYTE[RetInitDailyMsg.m_DailyArrSize];
 	for (int i = 0; i < RetInitDailyMsg.m_DailyArrSize; i++)
@@ -10786,7 +10243,7 @@ int CScriptManager::L_SendDailyAwardToPlayer(lua_State *L)	//∑¢ÀÕ»’≥£ªÓ∂ØµƒΩ±¿¯∏
 		return 0;
 	if (!lua_istable(L, 1))
 		return 0;
-	int TableSize = luaL_getn(L, 1);
+	int TableSize = luaL_len(L, 1);
 	SADailyAwardMsg DailyAwardData;
 	for (int i = 0; i < TableSize; i++)
 	{
@@ -10912,8 +10369,8 @@ int CScriptManager::L_SendTarotBaseData(lua_State *L)	//∑¢ÀÕÕÊº“À˛¬ﬁ≈∆ª˘±æ ˝æ›–≈
 	{
 		return 0;
 	}
-	int TarotBaseDataSize = luaL_getn(L, 2);
-	int TurnOnTarotDataSize = luaL_getn(L, 3);
+	int TarotBaseDataSize = luaL_len(L, 2);
+	int TurnOnTarotDataSize = luaL_len(L, 3);
 	if (TarotBaseDataSize > TAROTMAXNUM || TurnOnTarotDataSize > MAXTURNONTAROTNUM)
 		return 0;
 	SAInitTarotDataMsg Msg;
@@ -11183,7 +10640,7 @@ int CScriptManager::L_SendPlayerAddUpLoginInf(lua_State *L)		//∑¢ÀÕÕÊº“¿€º∆µ«¬Ωª
 		lua_rawgeti(L, -1, 4);	//¿€º∆µ«¬ΩΩ±¿¯µƒµ¿æﬂ–≈œ¢
 		if (!lua_istable(L, -1))
 			return 0;
-		int ItemTablesize = luaL_getn(L, -1);
+		int ItemTablesize = luaL_len(L, -1);
 		if (ItemTablesize > 2 * (ADDUPLOGINMAXAWARDNUM) || ItemTablesize % 2 == 1)
 			return 0;
 		for (int j = 0; j < ItemTablesize; j++)
@@ -11281,7 +10738,7 @@ int CScriptManager::L_SendPlayerRFBInf(lua_State *L)	//∑¢ÀÕÕÊº“≥‰÷µªÿ¿°Ω±“–≈œ¢
 		lua_rawgeti(L, -1, 4);	//≥‰÷µªÿ¿°Ω±¿¯µƒµ¿æﬂ–≈œ¢
 		if (!lua_istable(L, -1))
 			return 0;
-		int ItemTablesize = luaL_getn(L, -1);
+		int ItemTablesize = luaL_len(L, -1);
 		if (ItemTablesize > 2 * (ADDUPLOGINMAXAWARDNUM) || ItemTablesize % 2 == 1)
 			return 0;
 		for (int j = 0; j < ItemTablesize; j++)
@@ -11384,7 +10841,7 @@ int CScriptManager::L_SendPlayerLRInf(lua_State *L)		//∑¢ÀÕÕÊº“µ»º∂æ∫»¸ ˝æ›–≈œ¢
 		lua_rawgeti(L, -1, 4);	//µ»º∂æ∫»¸Ω±¿¯µƒµ¿æﬂ–≈œ¢
 		if (!lua_istable(L, -1))
 			return 0;
-		int ItemTablesize = luaL_getn(L, -1);
+		int ItemTablesize = luaL_len(L, -1);
 		if (ItemTablesize > 2 * (LEVELRACEMAXAWARDNUM) || ItemTablesize % 2 == 1)
 			return 0;
 		for (int j = 0; j < ItemTablesize; j++)
@@ -11472,7 +10929,7 @@ void AnalyzeFWRecordInf(lua_State *L, int iStackPos, FWRecordPlayerInf* lpResDat
 	{
 		return;
 	}
-	int Tablesize = luaL_getn(L, iStackPos);
+	int Tablesize = luaL_len(L, iStackPos);
 	for (int i = 1; i <= Tablesize; i++)
 	{
 		lua_rawgeti(L, iStackPos, i);
@@ -11499,7 +10956,7 @@ void AnalyzeFWBaseInf(lua_State *L, int iStackPos, FWBaseInf* lpResData)
 	{
 		return;
 	}
-	int Tablesize = luaL_getn(L, iStackPos);
+	int Tablesize = luaL_len(L, iStackPos);
 	for (int i = 1; i <= Tablesize; i++)
 	{
 		lua_rawgeti(L, iStackPos, i);
@@ -11663,7 +11120,7 @@ int CScriptManager::L_SendSceneSDListMsg(lua_State *L)
 
 		if (lua_istable(L,6))
 		{
-			int nsize = luaL_getn(L, 6);
+			int nsize = luaL_len(L, 6);
 			int *tempstar = new int[nsize];
 			for (int i = 0; i<nsize; i++)
 			{
@@ -11721,7 +11178,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 1, "dConWinItem");
 		if (lua_istable(L, -1))
 		{
-			size_t tlenth = luaL_getn(L, -1);
+			size_t tlenth = luaL_len(L, -1);
 			for (size_t i = 0; i < tlenth; i++)
 			{
 				GetTableArrayNumber(L, -1, i + 1, sArenaReward.dConWinItem[i]);
@@ -11730,7 +11187,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 1, "bConWinItemNum");
 		if (lua_istable(L, -1))
 		{
-			size_t tlenth = luaL_getn(L, -1);
+			size_t tlenth = luaL_len(L, -1);
 			for (size_t i = 0; i < tlenth; i++)
 			{
 				GetTableArrayNumber(L, -1, i + 1, sArenaReward.bConWinItemNum[i]);
@@ -11738,7 +11195,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		}
 
 		//table 2
-		size_t tlenth = luaL_getn(L, 2);
+		size_t tlenth = luaL_len(L, 2);
 		for (size_t i = 0; i < tlenth; i++)
 		{
 			lua_rawgeti(L, 2, i + 1);
@@ -11760,7 +11217,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 				lua_getfield(L, -1, "arenaitem");
 				if (lua_istable(L, -1))
 				{
-					size_t tslenth = luaL_getn(L, -1);
+					size_t tslenth = luaL_len(L, -1);
 					for (size_t j = 0; j < tslenth;j++)
 					{
 						GetTableArrayNumber(L, -1, j + 1, sArenaReward.arendreward[i].arenaitem[j]);
@@ -11770,7 +11227,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 				lua_getfield(L, -1, "arenaitemnum");
 				if (lua_istable(L, -1))
 				{
-					size_t tslenth = luaL_getn(L, -1);
+					size_t tslenth = luaL_len(L, -1);
 					for (size_t j = 0; j < tslenth; j++)
 					{
 						GetTableArrayNumber(L, -1, j + 1, sArenaReward.arendreward[i].arenaitemnum[j]);
@@ -11798,7 +11255,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 3, "arenaitem");
 		if (lua_istable(L, -1))
 		{
-			size_t tslenth = luaL_getn(L, -1);
+			size_t tslenth = luaL_len(L, -1);
 			for (size_t j = 0; j < tslenth; j++)
 			{
 				GetTableArrayNumber(L, -1, j + 1, sArenaReward.upstagereward.arenaitem[j]);
@@ -11808,7 +11265,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 3, "arenaitemnum");
 		if (lua_istable(L, -1))
 		{
-			size_t tslenth = luaL_getn(L, -1);
+			size_t tslenth = luaL_len(L, -1);
 			for (size_t j = 0; j < tslenth; j++)
 			{
 				GetTableArrayNumber(L, -1, j + 1, sArenaReward.upstagereward.arenaitemnum[j]);
@@ -11835,7 +11292,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 4, "arenaitem");
 		if (lua_istable(L, -1))
 		{
-			size_t tslenth = luaL_getn(L, -1);
+			size_t tslenth = luaL_len(L, -1);
 			for (size_t j = 0; j < tslenth; j++)
 			{
 				GetTableArrayNumber(L, -1, j + 1, sArenaReward.currentreward.arenaitem[j]);
@@ -11845,7 +11302,7 @@ int CScriptManager::L_SendArenaRewardMsg(lua_State *L)
 		lua_getfield(L, 4, "arenaitemnum");
 		if (lua_istable(L, -1))
 		{
-			size_t tslenth = luaL_getn(L, -1);
+			size_t tslenth = luaL_len(L, -1);
 			for (size_t j = 0; j < tslenth; j++)
 			{
 				GetTableArrayNumber(L, -1, j + 1, sArenaReward.currentreward.arenaitemnum[j]);
@@ -12071,7 +11528,7 @@ int CScriptManager::L_SendShopListInfo(lua_State *L)		//∑¢ÀÕ…Ã≥«–≈œ¢
 		return 0;
 	}
 	SAShopListMsg ShopList;
-	int GoodsTableSize = luaL_getn(L, -1);
+	int GoodsTableSize = luaL_len(L, -1);
 	ShopList.m_ShopNum = GoodsTableSize;
 	if (GoodsTableSize == 0)
 		ShopList.m_lpShopData = NULL;
@@ -12131,7 +11588,7 @@ int CScriptManager::L_SendShopGoodsListInfo(lua_State *L)		//∑¢ÀÕ…Ã≥«÷–…Ã∆∑–≈œ¢
 		return 0;
 	}
 	SAShopGoodsListMsg GoodsList;
-	int GoodsTableSize = luaL_getn(L, -1);
+	int GoodsTableSize = luaL_len(L, -1);
 	GoodsList.m_GoodsNum = GoodsTableSize;
 	if (GoodsTableSize == 0)
 		GoodsList.m_lpGoodsData = NULL;
@@ -12401,7 +11858,7 @@ int CScriptManager::L_SendVipStateInf(lua_State *L)		//∑¢ÀÕÕÊº“VIPµƒ◊¥Ã¨–≈œ¢
 		return 0;
 	if (!lua_istable(L, 1))	
 		return 0;
-	int TableSize = luaL_getn(L, 1);
+	int TableSize = luaL_len(L, 1);
 	if (TableSize != 10)//vipµ»º∂◊Ó¥ÛŒ™10
 		return 0;
 	SAInitVipInfMsg InitVipInfo;
@@ -12425,7 +11882,7 @@ int CScriptManager::L_SendGiftInfo(lua_State *L)	//∑¢ÀÕ¿Ò∞¸ ˝æ›–≈œ¢
 		return 0;
 	}
 	SAGetVipGiftInfMsg GetVipGiftInf;
-	int DataSize = luaL_getn(L, 1);
+	int DataSize = luaL_len(L, 1);
 	GetVipGiftInf.m_ItemSize = DataSize / 2;
 	GetVipGiftInf.m_pItemID = new DWORD[GetVipGiftInf.m_ItemSize];
 	GetVipGiftInf.m_pItemIDNum = new BYTE[GetVipGiftInf.m_ItemSize];
@@ -12477,7 +11934,7 @@ int CScriptManager::L_AddSomeGoods(lua_State *L)	//ÃÌº”“ªœµ¡–µ¿æﬂµΩ±≥∞¸÷–£¨»Áπ˚±
 	DWORD additem = 0;
 	WORD  addnum = 0;
 	//ªÒ»°±Ì÷–µƒ◊∞±∏–≈œ¢
-	for (int k = 1; k <= luaL_getn(L, 1); k++)
+	for (int k = 1; k <= luaL_len(L, 1); k++)
 	{
 		lua_rawgeti(L, 1, k);
 		if (k % 2 == 1)
@@ -12670,7 +12127,7 @@ int CScriptManager::L_AddNewPet(lua_State *L)	//ÃÌº”≥ËŒÔ
 	lua_pop(L, 1);
 
 	//µ±«∞ø…“‘”µ”–ººƒ‹
-	int SkillSize = luaL_getn(L, 3) - 1;	//ªÒ»°ø…“‘”µ”–µƒººƒ‹ ˝¡ø
+	int SkillSize = luaL_len(L, 3) - 1;	//ªÒ»°ø…“‘”µ”–µƒººƒ‹ ˝¡ø
 	for (int i = 0; i < SkillSize; i++)
 	{
 		lua_rawgeti(L, 3, i + 2);
@@ -12715,7 +12172,7 @@ int CScriptManager::L_SendCardPetInf(lua_State *L)	//∑¢ÀÕø®≈∆≥ËŒÔ¡–±Ì–≈œ¢
 		return 0;
 	if (!lua_istable(L, 1))
 		return 0;
-	int CardPetNum = luaL_getn(L, 1);
+	int CardPetNum = luaL_len(L, 1);
 	if (CardPetNum == 0)
 	{
 		TalkToDnid(g_Script.m_pPlayer->m_ClientIndex, "ø®≈∆÷–√ª”–≥ËŒÔ ˝æ›");
@@ -12741,7 +12198,7 @@ int CScriptManager::L_SendPetCardInf(lua_State *L)	//∑¢ÀÕ≥ËŒÔø®≈∆–≈œ¢
 		return 0;
 	if (!lua_istable(L, 1))
 		return 0;
-	int CardNum = luaL_getn(L, 1);
+	int CardNum = luaL_len(L, 1);
 	if (CardNum == 0)
 	{
 		TalkToDnid(g_Script.m_pPlayer->m_ClientIndex, "√ª”–ø®≈∆ ˝æ›");
@@ -12793,7 +12250,7 @@ int CScriptManager::L_ExceSwallowPetOpt(lua_State *L)	//ÕÃ …≥ËŒÔ
 	if (pSrcPetData == NULL)
 		return 0;
 
-	BYTE DestPetIDNum = static_cast<BYTE>(luaL_getn(L, 2));
+	BYTE DestPetIDNum = static_cast<BYTE>(luaL_len(L, 2));
 	for (BYTE i = 0; i < DestPetIDNum; i++)
 	{
 		lua_rawgeti(L, 2, i + 1);
@@ -12893,7 +12350,7 @@ int CScriptManager::L_PetBreachOpt(lua_State *L)	//≥ËŒÔÕª∆∆£®≥ËŒÔ…˝–«£©
 		return 0;
 	}
 
-	int PetStarNum = luaL_getn(L, 2);
+	int PetStarNum = luaL_len(L, 2);
 	WORD PetStarAndMaxLevel = pPetData->m_PetStarAndMaxLevel;
 	BYTE PetStar = (BYTE)(PetStarAndMaxLevel >> 8);
 
@@ -13052,7 +12509,7 @@ int CScriptManager::L_PetSkillCfg(lua_State *L)		//…Ë÷√≥ËŒÔµ±«∞ø…“‘ π”√µƒººƒ‹
 		TalkToDnid(g_Script.m_pPlayer->m_ClientIndex, "√ª”–∏√≥ËŒÔ");
 		return 0;
 	}
-	int SkillNum = luaL_getn(L, 2);
+	int SkillNum = luaL_len(L, 2);
 	BYTE PetCanUsedSkill[PETMAXUSESKILLNUM];
 	for (int i = 1; i <= SkillNum; i++)
 	{
@@ -13121,7 +12578,7 @@ int CScriptManager::L_CalAndSendPetExp(lua_State *L)	//º∆À„≥ËŒÔµƒœ‡πÿæ≠—È–≈œ¢£¨≤
 	int BringExpSwitchScale = static_cast<int>(lua_tonumber(L, 3));
 	int AllExpAttachScale = static_cast<int>(lua_tonumber(L, 4));
 	
-	BYTE DestPetIDNum = static_cast<BYTE>(luaL_getn(L, 1));
+	BYTE DestPetIDNum = static_cast<BYTE>(luaL_len(L, 1));
 	DWORD AddPetExp = 0;	//ÕÃ …≥ËŒÔø…“‘ªÒµ√µƒæ≠—È÷µ
 	for (BYTE i = 0; i < DestPetIDNum; i++)
 	{
@@ -13348,7 +12805,7 @@ int CScriptManager::L_SendEveryDayPayAwardState(lua_State *L)	//∑¢ÀÕ√ø»’≥‰÷µΩ±¿¯
 		return 0;
 	if (!lua_istable(L, 1))
 		return 0;
-	int TableSize = luaL_getn(L, 1);
+	int TableSize = luaL_len(L, 1);
 	if (TableSize > EVERYDAYAWARDNUM)
 		TableSize = EVERYDAYAWARDNUM;
 	SAGetEveryDayAwardStateMsg Res;
@@ -13550,8 +13007,8 @@ int CScriptManager::L_SendRandListData(lua_State *L)	//∑¢ÀÕ≈≈––∞Ò ˝æ›
 		return 0;
 	if (!lua_istable(L, 1) || !lua_istable(L, 2) || !lua_isnumber(L, 3))
 		return 0;
-	WORD TopNDataSize = luaL_getn(L, 1);
-	WORD PlayerTopNDataSize = luaL_getn(L, 2);
+	WORD TopNDataSize = luaL_len(L, 1);
+	WORD PlayerTopNDataSize = luaL_len(L, 2);
 	BYTE Type = lua_tonumber(L, 3);
 	SAPlayerRankList ResponseData;
 	ResponseData.m_Type = Type;
@@ -13590,7 +13047,7 @@ int CScriptManager::L_SendRandAwardFlag(lua_State *L)	//∑¢ÀÕÕÊº“≈≈––∞Ò¡ÏΩ±◊¥Ã¨
 	if (!lua_istable(L, 1))
 		return 0;
 	SAGetRankAwardState RetureState;
-	BYTE TableSize = luaL_getn(L, 1);
+	BYTE TableSize = luaL_len(L, 1);
 	for (int i = 1; i <= TableSize; i++)
 	{
 		lua_rawgeti(L, 1, i);
@@ -13670,7 +13127,7 @@ void AnalyzeActivenessItem(lua_State *L, ActivenessAward *pAwardInf, BYTE AwardI
 		lua_getfield(L, -1, "AwardItemInf");
 		if (!lua_istable(L, -1))
 			return;
-		int ItemArrNum = luaL_getn(L, -1);
+		int ItemArrNum = luaL_len(L, -1);
 		if (ItemArrNum > ACTIVENESSITEMMAXNUM)
 			ItemArrNum = ACTIVENESSITEMMAXNUM;
 		for (int j = 1; j <= ItemArrNum; j++)
@@ -13708,7 +13165,7 @@ int CScriptManager::L_SendActivenessInfo(lua_State *L)	//∑¢ÀÕªÓ‘æ∂»œÍœ∏–≈œ¢
 	lua_getfield(L, 1, "TaskInf");
 	if (!lua_istable(L, -1))
 		return 0;
-	int TaskInfSize = luaL_getn(L, -1);
+	int TaskInfSize = luaL_len(L, -1);
 	ActivenessInf.m_ActivenessTaskNum = TaskInfSize;
 	ActivenessInf.m_pTaskInfo = new ActivenessTaskInf[TaskInfSize];
 	AnalyzeActivenessTask(L, ActivenessInf.m_pTaskInfo, TaskInfSize);
@@ -13717,7 +13174,7 @@ int CScriptManager::L_SendActivenessInfo(lua_State *L)	//∑¢ÀÕªÓ‘æ∂»œÍœ∏–≈œ¢
 	lua_getfield(L, 1, "AwardInf");
 	if (!lua_istable(L, -1))
 		return 0;
-	int AwardInfSize = luaL_getn(L, -1);
+	int AwardInfSize = luaL_len(L, -1);
 	ActivenessInf.m_ActivenessAwardNum = AwardInfSize;
 	ActivenessInf.m_pAwardInfo = new ActivenessAward[AwardInfSize];
 	memset(ActivenessInf.m_pAwardInfo, 0, sizeof(ActivenessAward)* AwardInfSize);
@@ -13851,7 +13308,7 @@ int CScriptManager::L_SendFriendList(lua_State *L)
 		if (lua_istable(L,7))
 		{
 			/*
-			int nsize = luaL_getn(L,2);
+			int nsize = luaL_len(L,2);
 			SRefreshFriendsMsg srefrechmsg;
 			srefrechmsg.wFriendCount = nsize;
 			memset(srefrechmsg.fdata, 0, sizeof(FriendData)*MAX_PEOPLE_NUMBER);
@@ -14091,7 +13548,7 @@ int CScriptManager::L_SendFactioninfo(lua_State *L)
 		GetTableNumber(L, 2, "Title", sfinfo.Title);
 		if (lua_istable(L, 3))
 		{
-			size_t nlenth = luaL_getn(L, 3);
+			size_t nlenth = luaL_len(L, 3);
 			size_t	istart = 0;
 			size_t   isend = nlenth > MAX_FACTION_NUMBER ? MAX_FACTION_NUMBER : nlenth;
 			sfinfo.CurMemberNum = isend;
@@ -14152,7 +13609,7 @@ int CScriptManager::L_SendFactionList(lua_State *L)
 		SAFactionList sFactionList;
 		memset(sFactionList.m_factionlist, 0, MAX_FACTION_NUMBER * sizeof(FactionInfoList));
 
-		size_t nlenth = luaL_getn(L, 2);
+		size_t nlenth = luaL_len(L, 2);
 		for (int i = 0; i < nlenth; i++)
 		{
 			lua_rawgeti(L, 2, i + 1);
@@ -14216,7 +13673,7 @@ int CScriptManager::L_SendManagerFaction(lua_State *L)
 		{
 			if (lua_istable(L, 4))
 			{
-				size_t nlenth = luaL_getn(L, 4);
+				size_t nlenth = luaL_len(L, 4);
 				sManagfaction.bMembernum = nlenth;
 				for (int i = 0; i < nlenth; i++)
 				{
@@ -14248,7 +13705,7 @@ int CScriptManager::L_SendManagerFaction(lua_State *L)
 		{
 			if (lua_istable(L, 4))
 			{
-				size_t nlenth = luaL_getn(L, 4);
+				size_t nlenth = luaL_len(L, 4);
 				sManagfaction.bMembernum = nlenth;
 				for (int i = 0; i < nlenth; i++)
 				{
@@ -14335,7 +13792,7 @@ int CScriptManager::L_SendFactionSceneList(lua_State *L)
 	{
 		sFactionSceneData.wactivevalue = static_cast<DWORD>(lua_tonumber(L,2));
 		sFactionSceneData.wturnonnum = static_cast<DWORD>(lua_tonumber(L, 3));
-		size_t nlenth = luaL_getn(L, 4);
+		size_t nlenth = luaL_len(L, 4);
 		for (int i = 0; i < nlenth; i++)
 		{
 			if (i + 1 > MAX_SENDFACTIONS)
@@ -14376,7 +13833,7 @@ int CScriptManager::L_SendSceneInfo(lua_State *L)
 		memset(sFactionMapData.m_factionscenemap, 0, sizeof(factionscenemap)*MAX_SENDFACTIONS);
 		sFactionMapData.bChallengeCount = static_cast<BYTE>(lua_tonumber(L, 2));
 		sFactionMapData.dsceneID = static_cast<DWORD>(lua_tonumber(L, 3));
-		size_t nlenth = luaL_getn(L, 4);
+		size_t nlenth = luaL_len(L, 4);
 		for (int i = 0; i < nlenth; i++)
 		{
 			if (i + 1 > MAX_SENDFACTIONS)
@@ -14476,7 +13933,7 @@ int CScriptManager::L_SendMailToPlayer(lua_State *L)
 
 	}
 
-	size_t nlenth = luaL_getn(L,2);
+	size_t nlenth = luaL_len(L,2);
 	for (int i = 0; i < nlenth; i++)
 	{
 		if (i + 1 > CONST_MAIL_MAXITEM_NUM)
@@ -14518,7 +13975,7 @@ int CScriptManager::L_SendFactionSceneRank(lua_State *L)
 	memset(sscenerank.m_factionrank, 0, sizeof(factionscenerank)*MAX_FACTION_NUMBER);
 	if (lua_istable(L,2))
 	{
-		size_t nlenth = luaL_getn(L, 2);
+		size_t nlenth = luaL_len(L, 2);
 		sscenerank.wRankNum = nlenth;
 		for (int i = 0; i < nlenth; i++)
 		{
@@ -14568,7 +14025,7 @@ int CScriptManager::L_SendFactionSalaryData(lua_State *L)
 	memset(sfactionsalary.m_fsalarydata, 0, sizeof(factionsalarydata) * 2);
 	if (lua_istable(L,2))
 	{
-		size_t nlenth = luaL_getn(L, 2);
+		size_t nlenth = luaL_len(L, 2);
 		for (int i = 0; i < nlenth; i++)
 		{
 			lua_rawgeti(L, 2, i + 1);
@@ -14577,7 +14034,7 @@ int CScriptManager::L_SendFactionSalaryData(lua_State *L)
 				lua_getfield(L, -1, "itemlist");
 				if (lua_istable(L,-1))
 				{
-					size_t nitemlenth = luaL_getn(L, -1);
+					size_t nitemlenth = luaL_len(L, -1);
 					for (int j = 0; j < nitemlenth; j+=3)
 					{
 						if (j + 1 > MAX_SENDFACTIONS * 3)
@@ -14642,7 +14099,7 @@ int CScriptManager::L_SaveAllFactionData(lua_State *L)
 	memset(pfactiondatastream, 0, sizeof(sSaveFactionMsg.streamFaction));
 	if (lua_istable(L, 1))
 	{
-		size_t  toplenth = luaL_getn(L, 1);
+		size_t  toplenth = luaL_len(L, 1);
 		if (toplenth == 0)
 		{
 			rfalse(2, 1, "L_SaveAllFactioninfo ERROR");
@@ -14660,7 +14117,7 @@ int CScriptManager::L_SaveAllFactionData(lua_State *L)
 				if (lua_istable(L, -1))
 				{
 					memset(&FactionData, 0, sizeof(SaveFactionData_Lua));
-					size_t  nlenth = luaL_getn(L, -1);
+					size_t  nlenth = luaL_len(L, -1);
 					lua_rawgeti(L, -1, 1);
 					if (lua_istable(L, -1))
 					{
@@ -14774,7 +14231,7 @@ int CScriptManager::L_SendFactionLog(lua_State *L)
 	if (lua_istable(L, 2))
 	{
 		memset(sOperateLog.factionlog, 0, sizeof(operatelog)*MAX_NOTICE_NUMBER);
-		size_t nlenth = luaL_getn(L, 2);
+		size_t nlenth = luaL_len(L, 2);
 		sOperateLog.blognum = nlenth;
 		for (int i = 0; i < nlenth; i++)
 		{
@@ -14833,14 +14290,14 @@ int CScriptManager::L_SendEquiptList(lua_State *L)
 	if (lua_isnumber(L, 2) && lua_istable(L,3))
 	{
 		sshowequipt.dSelectedEquipt = static_cast<DWORD>(lua_tonumber(L, 2));
-		sshowequipt.blevelnum = luaL_getn(L, 3);
+		sshowequipt.blevelnum = luaL_len(L, 3);
 		for (int i = 0; i < sshowequipt.blevelnum; i++)
 		{
 			lua_rawgeti(L, 3, i + 1);
 			if (lua_istable(L, -1))
 			{
 				DWORD  dequiptid = 0;
-				size_t nlenth = luaL_getn(L, -1);
+				size_t nlenth = luaL_len(L, -1);
 				if (pBuffer - sshowequipt.Buffer  >= MAX_QUESTEQUIPTBUFFER)
 				{
 					rfalse(2, 1, "too long for equiptbuffer");
@@ -14903,7 +14360,7 @@ int CScriptManager::L_SendRequestStatus(lua_State *L)
 	if (lua_isnumber(L, 2) && lua_istable(L, 3))
 	{
 		sRequestStatus.wEquiptNum = static_cast<WORD>(lua_tonumber(L, 2));
-		size_t nlenth = luaL_getn(L, 3);
+		size_t nlenth = luaL_len(L, 3);
 		for (int i = 0; i < nlenth; i++)
 		{
 			lua_rawgeti(L, 3, i + 1);
@@ -14960,7 +14417,7 @@ int CScriptManager::L_SendInitPrayer(lua_State *L)
 	memset(sinitprayermsg.pPlayerPoint, 0, sizeof(PrayerPoint) * RANK_LIST_MAX);
 	if (lua_istable(L,2))
 	{
-		size_t nlenth  = luaL_getn(L, 2);
+		size_t nlenth  = luaL_len(L, 2);
 		for (int i = 0; i < nlenth; i++)
 		{
 			lua_rawgeti(L, 2, i+1);
@@ -15014,7 +14471,7 @@ int CScriptManager::L_SendPrayerResult(lua_State *L)
 	DWORD ditemindex = 0;
 	if (lua_istable(L, 3))
 	{
-		size_t nlenth = luaL_getn(L, 3);
+		size_t nlenth = luaL_len(L, 3);
 		pPrayerMsg.wItemNum = nlenth;
 		for (int i = 0; i < nlenth; i++)
 		{
@@ -15066,7 +14523,7 @@ int CScriptManager::L_SendShopItemList(lua_State *L)
 
 		if (lua_istable(L,5))
 		{
-			size_t nlenth = luaL_getn(L, 5);
+			size_t nlenth = luaL_len(L, 5);
 			for (int i = 0; i < nlenth; i++)
 			{
 				if (i + 1 > MAX_PRAYER_SHOPITEM)
@@ -15158,7 +14615,7 @@ int CScriptManager::L_SendActivityCodeResult(lua_State *L)
 		memset(sgiftcode.bBuffer, 0, bufflen);
 		BYTE  *pgiftcode = sgiftcode.bBuffer;
 
-		size_t nlenth = luaL_getn(L, 3);
+		size_t nlenth = luaL_len(L, 3);
 		sgiftcode.wItemNum = nlenth;
 		sgiftcode.bresult = static_cast<BYTE>(lua_tonumber(L, 2));
 		BYTE  btype = 0;
